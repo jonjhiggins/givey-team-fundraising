@@ -18,7 +18,7 @@ angular.module('giveyTeamFundraisingApp')
             text: 'Donate',
             href: 'http://givey.com'
         },
-        progressTitle: 'So far we\'ve reaised',
+        progressTitle: 'So far we\'ve raised',
         progressTotal: '£1000',
         progressPercentage: '50%',
         membersTitle: 'Our team',
