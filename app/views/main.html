@@ -20,23 +20,23 @@
   </p>
 </section>
 
-<section class="team-members">
+<section class="teamMembers">
   <header>
-    <h1 class="team-members__title">{{ main.team.membersTitle }}</h1>
+    <h1 class="teamMembers__title">{{ main.team.membersTitle }}</h1>
   </header>
-  <ul class="team-members__member-list">
-    <li class="member" ng-repeat="member in main.team.members">
-      <img src="{{ member.image }}" alt="" class="member__image">
-      <h3 class="member__name">{{ member.name }}</h3>
-      <p class="member__description">{{ member.description }}</p>
-      <figure class="member__chart">
-        <div class="chart" style="width: {{ member.percentage }}"></div>
+  <ul class="teamMembers__teamMember-list">
+    <li class="teamMember" ng-repeat="teamMember in main.team.teamMembers">
+      <img src="{{ teamMember.image }}" alt="" class="teamMember__image">
+      <h3 class="teamMember__name">{{ teamMember.name }}</h3>
+      <p class="teamMember__description">{{ teamMember.description }}</p>
+      <figure class="teamMember__chart">
+        <div class="chart" style="width: {{ teamMember.percentage }}"></div>
         <figcaption>
-          <span class="chart__percentage">{{ member.percentage }}</span>
-          <span class="chart__total">{{ member.total }}</span>
+          <span class="chart__percentage">{{ teamMember.percentage }}</span>
+          <span class="chart__total">{{ teamMember.total }}</span>
         </figcaption>
       </figure>
-      <a href="{{ member.cta.href }}" class="btn btn-primary">{{ main.team.teamCta.text }}</a>
+      <a href="{{ teamMember.cta.href }}" class="btn btn-primary">{{ main.team.teamCta.text }}</a>
     </li>
   </ul>
 </section>

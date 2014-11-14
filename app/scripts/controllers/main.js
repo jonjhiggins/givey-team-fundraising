@@ -9,11 +9,11 @@
  */
 angular
   .module('giveyTeamFundraisingApp')
-  .controller('MainCtrl', function (memberService) {
+  .controller('MainCtrl', function (teamMemberService) {
 
-    this.meaningOfLife = memberService.meaningOfLife;
 
     // Need to move out of controller
+
     this.team = {
         teamName: 'Your Givey Team',
         teamDescription: 'Lorem ipsum',
@@ -25,7 +25,8 @@ angular
         progressTotal: '£1000',
         progressPercentage: '50%',
         membersTitle: 'Our team',
-        members: memberService.members
+        teamMembers: teamMemberService.teamMembers
     };
+
   });
 

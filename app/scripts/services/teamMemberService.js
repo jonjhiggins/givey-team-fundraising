@@ -3,19 +3,17 @@
 
   /**
    * @ngdoc service
-   * @name giveyTeamFundraisingApp.memberService
+   * @name giveyTeamFundraisingApp.teamMemberService
    * @description
-   * # memberService
+   * # teamMemberService
    * Factory in the giveyTeamFundraisingApp.
    */
-  angular
-    .module('giveyTeamFundraisingApp')
-    .factory('memberService', function () {
 
+  function teamMemberService() {
       /*jshint shadow:true*/
-      var memberService = {};
+      var teamMemberService = {};
 
-      memberService.members = [
+      teamMemberService.teamMembers = [
           {
               name: 'Jon',
               image: 'http://www.gravatar.com/avatar/acbc94c39c3c0eeaa7b9a6cb4540a2b5?s=96&d=identicon',
@@ -38,6 +36,12 @@
           }
       ];
 
-      return memberService;
-    });
+      console.log(teamMemberService);
+
+      return teamMemberService;
+  }
+
+  angular
+    .module('giveyTeamFundraisingApp')
+    .factory('teamMemberService', teamMemberService);
 })();
