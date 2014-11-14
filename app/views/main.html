@@ -1,31 +1,31 @@
 <section class="team jumbotron">
   <header>
-    <h1 class="team__title">{{ team.teamName }}</h1>
+    <h1 class="team__title">{{ main.team.teamName }}</h1>
   </header>
   <p class="team__description lead">
-    {{ team.teamDescription }}
+    {{ main.team.teamDescription }}
   </p>
-  <p><a class="btn btn-lg btn-success" ng-href="{{ team.teamCta.href }}">{{ team.teamCta.text }} <span class="glyphicon glyphicon-ok"></span></a></p>
+  <p><a class="btn btn-lg btn-success" ng-href="{{ main.team.teamCta.href }}">{{ main.team.teamCta.text }} <span class="glyphicon glyphicon-ok"></span></a></p>
 </section>
 
 <section class="team-progress">
   <header>
-    <h1 class="team-progress__title">{{ team.progressTitle }}</h1>
+    <h1 class="team-progress__title">{{ main.team.progressTitle }}</h1>
   </header>
   <p class="team-progress__total">
-    {{ team.progressTotal }}
+    {{ main.team.progressTotal }}
   </p>
   <p class="team-progress__percentage">
-    {{ team.progressPercentage }}
+    {{ main.team.progressPercentage }}
   </p>
 </section>
 
 <section class="team-members">
   <header>
-    <h1 class="team-members__title">{{ team.membersTitle }}</h1>
+    <h1 class="team-members__title">{{ main.team.membersTitle }}</h1>
   </header>
   <ul class="team-members__member-list">
-    <li class="member" ng-repeat="member in team.members">
+    <li class="member" ng-repeat="member in main.team.members">
       <img src="{{ member.image }}" alt="" class="member__image">
       <h3 class="member__name">{{ member.name }}</h3>
       <p class="member__description">{{ member.description }}</p>
@@ -36,7 +36,7 @@
           <span class="chart__total">{{ member.total }}</span>
         </figcaption>
       </figure>
-      <a href="{{ member.cta.href }}" class="btn btn-primary">{{ member.cta.text }}</a>
+      <a href="{{ member.cta.href }}" class="btn btn-primary">{{ main.team.teamCta.text }}</a>
     </li>
   </ul>
 </section>

@@ -21,18 +21,19 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        controllerAs: 'main'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+        controller: 'AboutCtrl',
+        controllerAs: 'about'
       })
       .otherwise({
         redirectTo: '/'
       });
-  });
-
-  angular.module('giveyTeamFundraisingApp').run(function($rootScope) {
+  })
+  .run(function($rootScope) {
     $rootScope.site = {
       name: 'Givey Team Fundraising',
       teamName: 'Team Name'

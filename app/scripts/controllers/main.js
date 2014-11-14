@@ -8,10 +8,10 @@
  * Controller of the giveyTeamFundraisingApp
  */
 angular.module('giveyTeamFundraisingApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function () {
 
     // Need to move out of controller
-    $scope.team = {
+    this.team = {
         teamName: 'Your Givey Team',
         teamDescription: 'Lorem ipsum',
         teamCta: {
@@ -29,9 +29,7 @@ angular.module('giveyTeamFundraisingApp')
                 description: 'Lorem ipsum',
                 percentage: '30%',
                 total: '£50',
-                // Move text out of here?
                 cta: {
-                    text: 'Donate',
                     href: 'http://givey.com'
                 },
             },
@@ -41,9 +39,7 @@ angular.module('giveyTeamFundraisingApp')
                 description: 'Lorem ipsum',
                 percentage: '30%',
                 total: '£50',
-                // Move text out of here?
                 cta: {
-                    text: 'Donate',
                     href: 'http://givey.com'
                 },
             }
