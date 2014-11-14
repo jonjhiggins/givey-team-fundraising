@@ -36,8 +36,6 @@
           }
       ];
 
-      console.log(teamMemberService);
-
       return teamMemberService;
   }
 
