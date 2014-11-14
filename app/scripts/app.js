@@ -1,5 +1,6 @@
 'use strict';
 
+
 /**
  * @ngdoc overview
  * @name giveyTeamFundraisingApp
@@ -8,6 +9,7 @@
  *
  * Main module of the application.
  */
+
 angular
   .module('giveyTeamFundraisingApp', [
     'ngAnimate',

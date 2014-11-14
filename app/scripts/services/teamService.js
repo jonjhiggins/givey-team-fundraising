@@ -3,17 +3,17 @@
 
   /**
    * @ngdoc service
-   * @name giveyTeamFundraisingApp.teamService
+   * @name giveyTeamFundraisingApp.TeamService
    * @description
-   * # teamService
+   * # TeamService
    * Factory in the giveyTeamFundraisingApp.
    */
 
-  function teamService() {
+  function TeamService() {
       /*jshint shadow:true*/
-      var teamService = {};
+      var TeamService = {};
 
-      teamService.team = {
+      TeamService.team = {
         teamName: 'Your Givey Team',
         teamDescription: 'Lorem ipsum',
         teamCta: {
@@ -26,10 +26,10 @@
         membersTitle: 'Our team'
       };
 
-      return teamService;
+      return TeamService;
   }
 
   angular
     .module('giveyTeamFundraisingApp')
-    .factory('teamService', teamService);
+    .factory('TeamService', TeamService);
 })();
