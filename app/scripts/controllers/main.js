@@ -7,8 +7,11 @@
  * # MainCtrl
  * Controller of the giveyTeamFundraisingApp
  */
-angular.module('giveyTeamFundraisingApp')
-  .controller('MainCtrl', function () {
+angular
+  .module('giveyTeamFundraisingApp')
+  .controller('MainCtrl', function (memberService) {
+
+    this.meaningOfLife = memberService.meaningOfLife;
 
     // Need to move out of controller
     this.team = {
@@ -22,28 +25,7 @@ angular.module('giveyTeamFundraisingApp')
         progressTotal: '£1000',
         progressPercentage: '50%',
         membersTitle: 'Our team',
-        members: [
-            {
-                name: 'Jon',
-                image: 'http://www.gravatar.com/avatar/acbc94c39c3c0eeaa7b9a6cb4540a2b5?s=96&d=identicon',
-                description: 'Lorem ipsum',
-                percentage: '30%',
-                total: '£50',
-                cta: {
-                    href: 'http://givey.com'
-                },
-            },
-            {
-                name: 'Jon',
-                image: 'http://www.gravatar.com/avatar/acbc94c39c3c0eeaa7b9a6cb4540a2b5?s=96&d=identicon',
-                description: 'Lorem ipsum',
-                percentage: '30%',
-                total: '£50',
-                cta: {
-                    href: 'http://givey.com'
-                },
-            }
-        ]
+        members: memberService.members
     };
   });
 
