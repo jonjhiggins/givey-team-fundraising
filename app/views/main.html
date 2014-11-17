@@ -18,12 +18,13 @@
     <header>
       <h1 class="team-progress__title">{{ main.team.progressTitle }}</h1>
     </header>
-    <p class="team-progress__total">
-      {{ main.team.progressTotal }}
-    </p>
-    <p class="team-progress__percentage">
-      {{ main.team.progressPercentage }}
-    </p>
+    <figure class="area-chart">
+      <div class="chart"><div class="chart__bar" style="width: {{ main.team.progressPercentage }}"></div></div>
+      <figcaption>
+        <h4 class="chart__total">{{ main.team.progressTotal }}</h4>
+        <h6 class="chart__percentage">({{ main.team.progressPercentage }})</h6>
+      </figcaption>
+    </figure>
   </div>
 </section>
 

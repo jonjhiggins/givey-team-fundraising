@@ -133,4 +133,9 @@
     &:last-child { border-bottom: 0; }
   }
 
+  .team-member__image {
+    border-radius: $border-radius;
+    border: 1px solid $color-border;
+  }
+
 
