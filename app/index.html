@@ -21,19 +21,12 @@
 
     <!-- Add your site or application content here -->
     <div class="container">
-      <header class="header-global">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-        </ul>
-        <h3 class="header-global__title">{{ site.name }}</h3>
-      </header>
 
-      <div ng-view="" role="main"></div>
+      <main ng-view="" role="main"></main>
 
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> {{ site.name }}</p>
-      </div>
+      <footer class="footer" role="contentinfo">
+        <p>{{ site.name }}</p>
+      </footer>
     </div>
 
 
@@ -68,12 +61,11 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/services/TeamMemberService.js"></script>
-        <script src="scripts/services/TeamService.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/services/TeamMemberService.js"></script>
+    <script src="scripts/services/TeamService.js"></script>
+    <!-- endbuild -->
 </body>
 </html>
