@@ -5,44 +5,45 @@ describe('Service: memberService', function () {
   // load the service's module
   beforeEach(module('giveyTeamFundraisingApp'));
 
-  var $scope;
+  var $scope,
+      TeamMemberService;
 
-  // instantiate service
-  var TeamMemberService;
   beforeEach(inject(function ($rootScope, $q, _TeamMemberService_) {
+
     $scope = $rootScope.$new();
     TeamMemberService = _TeamMemberService_;
+
+    var testData = [
+      {
+          'name': 'Jon',
+          'image': 'http://www.gravatar.com/avatar/acbc94c39c3c0eeaa7b9a6cb4540a2b5?s=96&d=identicon',
+          'description': 'Lorem ipsum',
+          'percentage': '30%',
+          'total': '£50',
+          'cta': {
+              'href': 'http://givey.com'
+          }
+      },
+      {
+          'name': 'Jon',
+          'image': 'http://www.gravatar.com/avatar/acbc94c39c3c0eeaa7b9a6cb4540a2b5?s=96&d=identicon',
+          'description': 'Lorem ipsum',
+          'percentage': '30%',
+          'total': '£50',
+          'cta': {
+              'href': 'http://givey.com'
+          }
+      }
+    ];
+
     spyOn(TeamMemberService, 'requestTeamMembers').and.callFake(function() {
         var deferred = $q.defer();
-        deferred.resolve(
-          [
-            {
-                'name': 'Jon',
-                'image': 'http://www.gravatar.com/avatar/acbc94c39c3c0eeaa7b9a6cb4540a2b5?s=96&d=identicon',
-                'description': 'Lorem ipsum',
-                'percentage': '30%',
-                'total': '£50',
-                'cta': {
-                    'href': 'http://givey.com'
-                }
-            },
-            {
-                'name': 'Jon',
-                'image': 'http://www.gravatar.com/avatar/acbc94c39c3c0eeaa7b9a6cb4540a2b5?s=96&d=identicon',
-                'description': 'Lorem ipsum',
-                'percentage': '30%',
-                'total': '£50',
-                'cta': {
-                    'href': 'http://givey.com'
-                }
-            }
-          ]
-        );
+        deferred.resolve(testData);
         return deferred.promise;
     });
   }));
 
-  it('should get team member info', inject(function() {
+  it('should get team member info', function() {
 
     TeamMemberService.requestTeamMembers()
       .then(function(teamMembers){
@@ -55,8 +56,8 @@ describe('Service: memberService', function () {
         expect(teamMembers[0].cta.href).toBe('http://givey.com');
       }
     );
-      $scope.$apply();
+    $scope.$apply();
 
-  }));
+  });
 
 });
