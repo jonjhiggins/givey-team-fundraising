@@ -1,43 +1,44 @@
 // bower:scss
 // endbower
 
-.clearfix {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
+
+// Mixins
+// ============================================
+
+  .clearfix {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
   }
-}
 
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
+// Layout: Global
+// ============================================
 
-// Layout
-body {
-  padding-top: 1em;
-  padding-bottom: 1em;
-}
+  body {
 
-// Header
-.header-global {
-  @extend .clearfix;
-  margin-bottom: 1em;
-}
-.header-global__title {
-  margin-top: 0.25em;
-}
+  }
+
+// Browse Happy
+// ============================================
+
+  .browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+  }
 
 // Team Members
-.teamMembers__teamMember-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1em;
-}
+// ============================================
 
-.teamMember {
-  margin: 0 0 1em;
-}
+  .team-members__team-member-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1em;
+  }
+
+  .team-member {
+    margin: 0 0 1em;
+  }
