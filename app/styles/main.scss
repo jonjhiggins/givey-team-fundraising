@@ -1,7 +1,13 @@
-$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
+
+.clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
 
 .browsehappy {
   margin: 0.2em 0;
@@ -12,13 +18,13 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 // Layout
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 // Header
 .header-global {
-  @include clearfix();
+  @extend .clearfix;
   margin-bottom: 1em;
 }
 .header-global__title {
@@ -34,11 +40,4 @@ body {
 
 .teamMember {
   margin: 0 0 1em;
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
 }
