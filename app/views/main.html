@@ -2,44 +2,50 @@
   <figure class="team__bg">
     <img ng-src="{{ main.team.background }}" alt="">
   </figure>
-  <header>
-    <h1 class="team__title">{{ main.team.teamName }}</h1>
-  </header>
-  <p class="team__description lead">
-    {{ main.team.teamDescription }}
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="{{ main.team.teamCta.href }}">{{ main.team.teamCta.text }} <span class="glyphicon glyphicon-ok"></span></a></p>
+  <div class="layout-constrain">
+    <header>
+      <h1 class="team__title">{{ main.team.teamName }}</h1>
+    </header>
+    <p class="team__description lead">
+      {{ main.team.teamDescription }}
+    </p>
+    <p><a class="btn btn--lg btn--primary" ng-href="{{ main.team.teamCta.href }}">{{ main.team.teamCta.text }} <span class="glyphicon glyphicon-ok"></span></a></p>
+  </div>
 </section>
 
 <section class="section section--team-progress">
-  <header>
-    <h1 class="team-progress__title">{{ main.team.progressTitle }}</h1>
-  </header>
-  <p class="team-progress__total">
-    {{ main.team.progressTotal }}
-  </p>
-  <p class="team-progress__percentage">
-    {{ main.team.progressPercentage }}
-  </p>
+  <div class="layout-constrain">
+    <header>
+      <h1 class="team-progress__title">{{ main.team.progressTitle }}</h1>
+    </header>
+    <p class="team-progress__total">
+      {{ main.team.progressTotal }}
+    </p>
+    <p class="team-progress__percentage">
+      {{ main.team.progressPercentage }}
+    </p>
+  </div>
 </section>
 
 <section class="section section--team-members">
-  <header>
-    <h1 class="team-members__title">{{ main.team.membersTitle }}</h1>
-  </header>
-  <ul class="team-members__team-member-list">
-    <li class="team-member" ng-repeat="teamMember in main.teamMembers">
-      <img ng-src="{{ teamMember.image }}" alt="" class="team-member__image">
-      <h3 class="team-member__name">{{ teamMember.name }}</h3>
-      <p class="team-member__description">{{ teamMember.description }}</p>
-      <figure class="team-member__chart">
-        <div class="chart" style="width: {{ teamMember.percentage }}"></div>
-        <figcaption>
-          <span class="chart__percentage">{{ teamMember.percentage }}</span>
-          <span class="chart__total">{{ teamMember.total }}</span>
-        </figcaption>
-      </figure>
-      <a href="{{ teamMember.cta.href }}" class="btn btn-primary">{{ main.team.teamCta.text }}</a>
-    </li>
-  </ul>
+  <div class="layout-constrain">
+    <header>
+      <h1 class="team-members__title">{{ main.team.membersTitle }}</h1>
+    </header>
+    <ul class="team-members__team-member-list">
+      <li class="team-member" ng-repeat="teamMember in main.teamMembers">
+        <img ng-src="{{ teamMember.image }}" alt="" class="team-member__image">
+        <h3 class="team-member__name">{{ teamMember.name }}</h3>
+        <p class="team-member__description">{{ teamMember.description }}</p>
+        <figure class="area-chart">
+          <div class="chart"><div class="chart__bar" style="width: {{ teamMember.percentage }}"></div></div>
+          <figcaption>
+            <h4 class="chart__total">{{ teamMember.total }}</h4>
+            <h6 class="chart__percentage">raised ({{ teamMember.percentage }})</h6>
+          </figcaption>
+        </figure>
+        <a href="{{ teamMember.cta.href }}" class="btn btn--primary">{{ main.team.teamCta.text }}</a>
+      </li>
+    </ul>
+  </div>
 </section>

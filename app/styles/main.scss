@@ -13,11 +13,26 @@
     }
   }
 
+// Variables
+// ============================================
+
+  $color-border: #CCC;
+  $color-chart-bar: #999;
+  $color-button: #999;
+
+  $border-radius: 3px;
+
 // Layout: Global
 // ============================================
 
   body {
     font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin: 0;
+  }
+
+  .layout-constrain {
+    margin: 0 1em;
   }
 
 // Browse Happy
@@ -30,7 +45,79 @@
     padding: 0.2em 0;
   }
 
-// Team Members
+// Buttons
+// ============================================
+
+  .btn {
+    display: block;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid $color-button;
+    color: $color-button;
+    border-radius: $border-radius;
+  }
+
+  .btn--lg {
+    padding: 1em;
+  }
+
+  .btn--primary {
+    background-color: $color-button;
+    color: #FFF;
+  }
+
+// Charts
+// ============================================
+
+  .chart {
+    border: 1px solid $color-border;
+    padding: 0.2em;
+    margin-bottom: 1em;
+  }
+
+  .chart__bar {
+    background-color: $color-chart-bar;
+    height: 1em;
+  }
+
+  .chart__total { margin-bottom: 0; }
+
+  .chart__percentage {
+    font-weight: normal;
+    margin-top: 0.5em;
+  }
+
+// Sections
+// ============================================
+
+  .section {
+    padding: 1em 0;
+    border-bottom: 1px solid $color-border;
+  }
+
+// Section: Team
+// ============================================
+
+  .section--team {
+    position: relative;
+  }
+
+  .team__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+  }
+
+// Section: Team Members
 // ============================================
 
   .team-members__team-member-list {
@@ -41,4 +128,9 @@
 
   .team-member {
     margin: 0 0 1em;
+    border-bottom: 1px dotted $color-border;
+
+    &:last-child { border-bottom: 0; }
   }
+
+
