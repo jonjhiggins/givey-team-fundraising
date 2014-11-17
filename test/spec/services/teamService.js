@@ -23,7 +23,7 @@ describe('Service: TeamService', function () {
       'progressTitle': 'So far we\'ve raised',
       'progressTotal': '£1000',
       'progressPercentage': '50%',
-      'membersTitle': 'Our tea'
+      'membersTitle': 'Our team'
     };
 
     spyOn(TeamService, 'requestTeam').and.callFake(function() {

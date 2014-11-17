@@ -13,15 +13,19 @@
 
       var vm = this;
 
-      vm.team = TeamService.team;
+      TeamService.requestTeam().then(function(team){
+        vm.team = team;
+      });
 
       TeamMemberService.requestTeamMembers().then(function(teamMembers){
         vm.teamMembers = teamMembers;
       });
 
   };
+
   angular
     .module('giveyTeamFundraisingApp')
     .controller('MainCtrl', MainCtrl);
+
 })();
 

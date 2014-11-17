@@ -12,25 +12,24 @@
   function TeamMemberService($http, $q) {
       /*jshint shadow:true*/
 
-      var TeamMemberService = {
-        requestTeamMembers: function() {
-            var deferred = $q.defer(),
-                url = '/data/teamMembers.json';
+      var TeamMemberService = {};
 
-            $http.get(url)
-              .success(function(data) {
-                  deferred.resolve(data);
-              })
-              .error(function() {
-                  deferred.resolve([]);
-              });
+      TeamMemberService.requestTeamMembers = function() {
+          var deferred = $q.defer(),
+              url = '/data/teamMembers.json';
 
-            return deferred.promise;
-        }
+          $http.get(url)
+            .success(function(data) {
+                deferred.resolve(data);
+            })
+            .error(function() {
+                deferred.resolve([]);
+            });
+
+          return deferred.promise;
       };
 
       return TeamMemberService;
-
   }
 
   angular

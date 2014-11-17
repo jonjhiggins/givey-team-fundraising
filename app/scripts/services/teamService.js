@@ -9,21 +9,24 @@
    * Factory in the giveyTeamFundraisingApp.
    */
 
-  function TeamService() {
+  function TeamService($http, $q) {
       /*jshint shadow:true*/
+
       var TeamService = {};
 
-      TeamService.team = {
-        teamName: 'Your Givey Team',
-        teamDescription: 'Lorem ipsum',
-        teamCta: {
-            text: 'Donate',
-            href: 'http://givey.com'
-        },
-        progressTitle: 'So far we\'ve raised',
-        progressTotal: '£1000',
-        progressPercentage: '50%',
-        membersTitle: 'Our team'
+      TeamService.requestTeam = function() {
+          var deferred = $q.defer(),
+              url = '/data/team.json';
+
+          $http.get(url)
+            .success(function(data) {
+                deferred.resolve(data);
+            })
+            .error(function() {
+                deferred.resolve([]);
+            });
+
+          return deferred.promise;
       };
 
       return TeamService;
@@ -31,5 +34,5 @@
 
   angular
     .module('giveyTeamFundraisingApp')
-    .factory('TeamService', TeamService);
+    .factory('TeamService', ['$http', '$q', TeamService]);
 })();
