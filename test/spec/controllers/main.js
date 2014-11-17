@@ -7,27 +7,63 @@ describe('Controller: MainCtrl', function () {
 
   var vm, $scope;
 
-  describe('call toTeamMemberService', function() {
+  // call to TeamService
+  describe('call to TeamService', function() {
+
+    var testData = {
+        'teamName': 'Your Givey Team',
+        'teamDescription': 'Lorem ipsum',
+        'teamCta': {
+            'text': 'Donate',
+            'href': 'http://givey.com'
+        },
+        'progressTitle': 'So far we\'ve raised',
+        'progressTotal': '£1000',
+        'progressPercentage': '50%',
+        'membersTitle': 'Our tea'
+    };
+
+    beforeEach(inject(function($controller, $rootScope, $q, TeamService) {
+      $scope = $rootScope.$new();
+
+      spyOn(TeamService, 'requestTeam').and.callFake(function() {
+        var deferred = $q.defer();
+        deferred.resolve(testData);
+        return deferred.promise;
+      });
+
+      vm = $controller('MainCtrl', { $scope: $scope, TeamService: TeamService });
+    }));
+
+    it('should attach team info to the scope', function () {
+      $scope.$apply();
+      expect(vm.team).toEqual(testData);
+    });
+
+  });
+
+  // call to TeamMemberService
+  describe('call to TeamMemberService', function() {
+
+    var testData = [
+      {
+          'name': 'Jon',
+          'image': 'http://www.gravatar.com/avatar/acbc94c39c3c0eeaa7b9a6cb4540a2b5?s=96&d=identicon',
+          'description': 'Lorem ipsum',
+          'percentage': '30%',
+          'total': '£50',
+          'cta': {
+              'href': 'http://givey.com'
+          }
+      }
+    ];
 
     beforeEach(inject(function($controller, $rootScope, $q, TeamMemberService) {
       $scope = $rootScope.$new();
 
       spyOn(TeamMemberService, 'requestTeamMembers').and.callFake(function() {
         var deferred = $q.defer();
-        deferred.resolve(
-          [
-            {
-                'name': 'Jon',
-                'image': 'http://www.gravatar.com/avatar/acbc94c39c3c0eeaa7b9a6cb4540a2b5?s=96&d=identicon',
-                'description': 'Lorem ipsum',
-                'percentage': '30%',
-                'total': '£50',
-                'cta': {
-                    'href': 'http://givey.com'
-                }
-            }
-          ]
-        );
+        deferred.resolve(testData);
         return deferred.promise;
       });
 
@@ -37,30 +73,10 @@ describe('Controller: MainCtrl', function () {
     it('should attach a list of team members to the scope', function () {
       $scope.$apply();
       expect(vm.teamMembers.length).toBe(1);
-      expect(vm.teamMembers[0]).toEqual({
-          'name': 'Jon',
-          'image': 'http://www.gravatar.com/avatar/acbc94c39c3c0eeaa7b9a6cb4540a2b5?s=96&d=identicon',
-          'description': 'Lorem ipsum',
-          'percentage': '30%',
-          'total': '£50',
-          'cta': {
-              'href': 'http://givey.com'
-          }
-      });
+      expect(vm.teamMembers[0]).toEqual(testData[0]);
     });
 
   });
+
+
 });
-
-/*
-xit('should attach team info to the scope', function () {
-    expect(vm.team.teamName).toBe('Your Givey Team');
-    expect(vm.team.teamCta.text).toBe('Donate');
-    expect(vm.team.teamCta.href).toBe('http://givey.com');
-    expect(vm.team.progressTitle).toBe('So far we\'ve raised');
-    expect(vm.team.progressTotal).toBe('£1000');
-    expect(vm.team.progressPercentage).toBe('50%');
-    expect(vm.team.membersTitle).toBe('Our team');
-  });
-
- */
