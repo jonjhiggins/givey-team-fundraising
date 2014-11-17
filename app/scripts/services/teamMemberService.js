@@ -17,6 +17,8 @@
             var deferred = $q.defer(),
                 url = '/data/teamMembers.json';
 
+                console.log('here');
+
             $http.get(url)
               .success(function(data) {
                   deferred.resolve(data);

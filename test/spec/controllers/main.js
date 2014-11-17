@@ -7,7 +7,7 @@ describe('Controller: MainCtrl', function () {
 
   var vm, $scope;
 
-  describe('should attach a list of team members to the scope', function() {
+  describe('call toTeamMemberService', function() {
 
     beforeEach(inject(function($controller, $rootScope, $q, TeamMemberService) {
       $scope = $rootScope.$new();
@@ -16,16 +16,6 @@ describe('Controller: MainCtrl', function () {
         var deferred = $q.defer();
         deferred.resolve(
           [
-            {
-                'name': 'Jon',
-                'image': 'http://www.gravatar.com/avatar/acbc94c39c3c0eeaa7b9a6cb4540a2b5?s=96&d=identicon',
-                'description': 'Lorem ipsum',
-                'percentage': '30%',
-                'total': '£50',
-                'cta': {
-                    'href': 'http://givey.com'
-                }
-            },
             {
                 'name': 'Jon',
                 'image': 'http://www.gravatar.com/avatar/acbc94c39c3c0eeaa7b9a6cb4540a2b5?s=96&d=identicon',
@@ -46,7 +36,7 @@ describe('Controller: MainCtrl', function () {
 
     it('should attach a list of team members to the scope', function () {
       $scope.$apply();
-      expect(vm.teamMembers.length).toBe(2);
+      expect(vm.teamMembers.length).toBe(1);
       expect(vm.teamMembers[0]).toEqual({
           'name': 'Jon',
           'image': 'http://www.gravatar.com/avatar/acbc94c39c3c0eeaa7b9a6cb4540a2b5?s=96&d=identicon',
@@ -60,8 +50,6 @@ describe('Controller: MainCtrl', function () {
     });
 
   });
-
-  
 });
 
 /*
