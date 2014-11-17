@@ -5,29 +5,70 @@ describe('Controller: MainCtrl', function () {
   // load the controller's module
   beforeEach(module('giveyTeamFundraisingApp'));
 
-  var MainCtrl,
-    scope;
+  var vm, $scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
-      $scope: scope
+  describe('should attach a list of team members to the scope', function() {
+
+    beforeEach(inject(function($controller, $rootScope, TeamMemberService) {
+      $scope = $rootScope.$new();
+
+      spyOn(TeamMemberService, 'requestTeamMembers').and.callFake(function() {
+        return {
+          success:
+            function(callback) { callback(
+              [
+                {
+                    'name': 'Jon',
+                    'image': 'http://www.gravatar.com/avatar/acbc94c39c3c0eeaa7b9a6cb4540a2b5?s=96&d=identicon',
+                    'description': 'Lorem ipsum',
+                    'percentage': '30%',
+                    'total': '£50',
+                    'cta': {
+                        'href': 'http://givey.com'
+                    }
+                },
+                {
+                    'name': 'Jon',
+                    'image': 'http://www.gravatar.com/avatar/acbc94c39c3c0eeaa7b9a6cb4540a2b5?s=96&d=identicon',
+                    'description': 'Lorem ipsum',
+                    'percentage': '30%',
+                    'total': '£50',
+                    'cta': {
+                        'href': 'http://givey.com'
+                    }
+                }
+              ]
+            );
+            }
+        };
+      });
+
+      vm = $controller('MainCtrl', { $scope: $scope, TeamMemberService: TeamMemberService });
+    }));
+
+    it('should attach a list of team members to the scope', function () {
+      expect(vm.teamMembers.length).toBe(2);
+      expect(vm.teamMembers[0]).toEqual({
+          'name': 'Jon',
+          'image': 'http://www.gravatar.com/avatar/acbc94c39c3c0eeaa7b9a6cb4540a2b5?s=96&d=identicon',
+          'description': 'Lorem ipsum',
+          'percentage': '30%',
+          'total': '£50',
+          'cta': {
+              'href': 'http://givey.com'
+          }
+      });
     });
-  }));
 
-  it('should attach team info to the scope', function () {
-    expect(MainCtrl.team.teamName).toBe('Your Givey Team');
-    expect(MainCtrl.team.teamCta.text).toBe('Donate');
-    expect(MainCtrl.team.teamCta.href).toBe('http://givey.com');
-    expect(MainCtrl.team.progressTitle).toBe('So far we\'ve raised');
-    expect(MainCtrl.team.progressTotal).toBe('£1000');
-    expect(MainCtrl.team.progressPercentage).toBe('50%');
-    expect(MainCtrl.team.membersTitle).toBe('Our team');
   });
 
-  xit('should attach a list of team members to the scope', function () {
-    expect(MainCtrl.teamMembers.length).toBe(2);
-    expect(MainCtrl.teamMembers[0].name).toBe('Jon');
+  it('should attach team info to the scope', function () {
+    expect(vm.team.teamName).toBe('Your Givey Team');
+    expect(vm.team.teamCta.text).toBe('Donate');
+    expect(vm.team.teamCta.href).toBe('http://givey.com');
+    expect(vm.team.progressTitle).toBe('So far we\'ve raised');
+    expect(vm.team.progressTotal).toBe('£1000');
+    expect(vm.team.progressPercentage).toBe('50%');
+    expect(vm.team.membersTitle).toBe('Our team');
   });
 });

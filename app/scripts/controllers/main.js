@@ -9,11 +9,16 @@
    * Controller of the giveyTeamFundraisingApp
    */
 
-  var MainCtrl = function(TeamService, TeamMemberService) {
+  var MainCtrl = function($scope, TeamService, TeamMemberService) {
+
+      var vm = this;
 
       this.team = TeamService.team;
 
-      this.teamMembers = new TeamMemberService();
+      TeamMemberService.requestTeamMembers().success(function(data){
+        vm.teamMembers = data;
+        //self.teamMembers = TeamMemberService.teamMembersList;
+      });
 
   };
   angular

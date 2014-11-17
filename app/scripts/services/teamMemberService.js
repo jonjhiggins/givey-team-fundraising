@@ -12,25 +12,13 @@
   function TeamMemberService($http) {
       /*jshint shadow:true*/
 
-      // Define the TeamMemberService function
-        var TeamMemberService = function() {
+      return {
+        requestTeamMembers: function() {
+            var url = '/data/teamMembers.json';
 
-          var url = '/data/teamMembers.json',
-              data = $http.get(url),
-              self = this;
-
-          this.teamMembersList = [];
-
-          this.initialize = function() {
-            data.then(function(response) {
-              angular.extend(self.teamMembersList, response.data);
-            });
-          };
-
-          this.initialize();
+            return $http.get(url);
+        }
       };
-
-      return (TeamMemberService);
 
   }
 
