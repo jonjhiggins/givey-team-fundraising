@@ -13,11 +13,10 @@
 
       var vm = this;
 
-      this.team = TeamService.team;
+      vm.team = TeamService.team;
 
       TeamMemberService.requestTeamMembers().success(function(data){
         vm.teamMembers = data;
-        //self.teamMembers = TeamMemberService.teamMembersList;
       });
 
   };
