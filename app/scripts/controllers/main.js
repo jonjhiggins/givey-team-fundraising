@@ -15,8 +15,8 @@
 
       vm.team = TeamService.team;
 
-      TeamMemberService.requestTeamMembers().success(function(data){
-        vm.teamMembers = data;
+      TeamMemberService.requestTeamMembers().then(function(teamMembers){
+        vm.teamMembers = teamMembers;
       });
 
   };

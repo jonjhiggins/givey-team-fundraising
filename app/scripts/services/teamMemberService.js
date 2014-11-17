@@ -9,20 +9,31 @@
    * Factory in the giveyTeamFundraisingApp.
    */
 
-  function TeamMemberService($http) {
+  function TeamMemberService($http, $q) {
       /*jshint shadow:true*/
 
-      return {
+      var TeamMemberService = {
         requestTeamMembers: function() {
-            var url = '/data/teamMembers.json';
+            var deferred = $q.defer(),
+                url = '/data/teamMembers.json';
 
-            return $http.get(url);
+            $http.get(url)
+              .success(function(data) {
+                  deferred.resolve(data);
+              })
+              .error(function() {
+                  deferred.resolve([]);
+              });
+
+            return deferred.promise;
         }
       };
+
+      return TeamMemberService;
 
   }
 
   angular
     .module('giveyTeamFundraisingApp')
-    .factory('TeamMemberService', ['$http', TeamMemberService]);
+    .factory('TeamMemberService', ['$http', '$q', TeamMemberService]);
 })();
