@@ -16,10 +16,6 @@
           deferred = $q.defer(),
           teamMembers = [];
 
-      var calculatePercent = function() {
-        return null;
-      };
-
       TeamMemberService.requestTeamMembers = function() {
 
         // Load Givey - move to separate service
@@ -49,7 +45,6 @@
             image = user.get('avatarUrl'),
             imageThumb = image.replace('/upload/', '/upload/w_300,c_limit/'), // Resize large images
             total = user.get('voiceTotal'),
-            percentage = calculatePercent(),
             ctaHref = 'https://www.givey.com/' + giveyTag; // TODO: doesn't link to fundraiding page
 
         teamMembers.push({
@@ -58,7 +53,6 @@
           image: image,
           imageThumb: imageThumb,
           total: total,
-          percentage: percentage,
           cta: {
             href: ctaHref
           }
