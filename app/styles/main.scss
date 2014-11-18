@@ -5,12 +5,20 @@
 // Mixins
 // ============================================
 
-  .clearfix {
+  %clearfix {
     &:after {
       content: "";
       display: table;
       clear: both;
     }
+  }
+
+  %strech {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
   }
 
 // Variables
@@ -98,19 +106,14 @@
     border-bottom: 1px solid $color-border;
   }
 
-// Section: Team
-// ============================================
-
-  .section--team {
+  .section--bg {
     position: relative;
+    padding-top: 56.25%;
+    padding-bottom: 0;
   }
 
-  .team__bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  .section__bg {
+    @extend %strech;
     margin: 0;
     padding: 0;
 
@@ -118,6 +121,24 @@
       max-width: 100%;
       display: block;
     }
+  }
+
+  .section__content {
+    @extend %strech;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section__aligner {
+
+  }
+
+// Section: Team
+// ============================================
+
+  .section--team {
+    position: relative;
   }
 
 // Section: Team Members

@@ -6,6 +6,7 @@
         "text": "Donate"
     },
     "teamTarget": 100000,
+    "background": "/images/team-background.jpg",
     "progressTitle": "So far we've raised",
     "teamMembersTitle": "Our team",
     "teamMembersTarget": 15000
