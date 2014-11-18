@@ -18,12 +18,12 @@
                     .then(function(team) {
                       vm.team = team;
                       $rootScope.siteName = team.teamName;
-                      return team.giveyBusiness;
+                      return team;
                     });
           },
-          loadTeamMembers = function(giveyBusiness) {
+          loadTeamMembers = function(team) {
             return TeamMemberService
-                    .requestTeamMembers(giveyBusiness)
+                    .requestTeamMembers(team)
                     .then(function(teamMembers) {
                       vm.teamMembers = teamMembers;
                     });

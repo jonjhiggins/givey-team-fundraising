@@ -14,14 +14,16 @@
 
       var TeamMemberService = {},
           deferred = $q.defer(),
-          teamMembers = [];
+          teamMembers = [],
+          teamMembersTarget = 0;
 
-      TeamMemberService.requestTeamMembers = function(giveyBusiness) {
+      TeamMemberService.requestTeamMembers = function(team) {
 
-        // Load Givey - move to separate service
         var Givey = new GiveyApp();
 
-        Givey.find('business', giveyBusiness)
+        teamMembersTarget = team.teamMembersTarget;
+
+        Givey.find('business', team.giveyBusiness)
           .then(this.getTeamMembers);
         return deferred.promise;
       };
@@ -38,12 +40,15 @@
       };
 
       TeamMemberService.processTeamMember = function(_, user) {
+
         var fullName = user.get('fullName'),
             giveyTag = user.get('giveyTag'),
             description = user.get('personalMessage'),
             image = user.get('avatarUrl'),
             imageThumb = image.replace('/upload/', '/upload/w_300,c_limit/'), // Resize large images
-            total = $filter('giveyCurrency')(user.get('voiceTotal'), '£'),
+            totalRaw = user.get('voiceTotal'),
+            total = $filter('giveyCurrency')(totalRaw, '£'),
+            percentage = (totalRaw / teamMembersTarget).toFixed(0) + '%',
             ctaHref = 'https://www.givey.com/' + giveyTag; // TODO: doesn't link to fundraiding page
 
         teamMembers.push({
@@ -52,6 +57,7 @@
           image: image,
           imageThumb: imageThumb,
           total: total,
+          percentage: percentage,
           cta: {
             href: ctaHref
           }
