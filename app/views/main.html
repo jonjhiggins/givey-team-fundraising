@@ -18,15 +18,14 @@
     <header>
       <h1 class="team-progress__title">{{ main.team.progressTitle }}</h1>
     </header>
-    <figure class="area-chart">
-      <div class="chart"><div class="chart__bar" style="width: {{ main.team.teamPercentage }}"></div></div>
+    <div class="area-chart">
+      <canvas chart chart-type="Doughnut" chart-data="main.team.chart" chart-options="myOptions"></canvas>
       <figcaption>
         <h4 class="chart__total">{{ main.team.teamTotalFormatted }}</h4>
         <h6 class="chart__percentage">({{ main.team.teamPercentage }})</h6>
       </figcaption>
-
-      <div class="ct-chart ct-perfect-fourth"></div>
-    </figure>
+      
+    </div>
   </div>
 </section>
 

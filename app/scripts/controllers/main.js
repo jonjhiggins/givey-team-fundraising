@@ -46,6 +46,10 @@
                       })
                       .then(function(teamPercentage) {
                         var teamPercentageRaw = parseInt(teamPercentage.replace('%', ''));
+                        vm.team.chart = [
+                          { value : teamPercentageRaw, color : '#F7464A' },
+                          { value : 100 - teamPercentageRaw, color : '#EFEFEF' }
+                        ];
                       });
           };
 
