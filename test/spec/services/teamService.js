@@ -8,47 +8,48 @@ describe('Service: TeamService', function () {
   var $scope,
       TeamService;
 
-  beforeEach(inject(function ($rootScope, $q, _TeamService_) {
-
+  beforeEach(inject(function ($rootScope, _TeamService_) {
     $scope = $rootScope.$new();
     TeamService = _TeamService_;
-
-    var testData = {
-      'teamName': 'Your Givey Team',
-      'teamDescription': 'Lorem ipsum',
-      'teamCta': {
-          'text': 'Donate',
-          'href': 'http://givey.com'
-      },
-      'progressTitle': 'So far we\'ve raised',
-      'progressTotal': '£1000',
-      'progressPercentage': '50%',
-      'membersTitle': 'Our team'
-    };
-
-    spyOn(TeamService, 'requestTeam').and.callFake(function() {
-        var deferred = $q.defer();
-        deferred.resolve(testData);
-        return deferred.promise;
-    });
-
   }));
 
-  it('should get team info', function () {
+  describe('Method: requestTeam', function () {
 
-    TeamService.requestTeam()
-      .then(function(team){
-        expect(team.teamName).toBe('Your Givey Team');
-        expect(team.teamCta.text).toBe('Donate');
-        expect(team.teamCta.href).toBe('http://givey.com');
-        expect(team.progressTitle).toBe('So far we\'ve raised');
-        expect(team.progressTotal).toBe('£1000');
-        expect(team.progressPercentage).toBe('50%');
-        expect(team.membersTitle).toBe('Our team');
-      }
-    );
-    $scope.$apply();
+    beforeEach(inject(function ($q) {
+
+      var testData = {
+        'teamName': 'Your Givey Team',
+        'teamCta': {
+            'text': 'Donate'
+        }
+      };
+
+      spyOn(TeamService, 'requestTeam').and.callFake(function() {
+          var deferred = $q.defer();
+          deferred.resolve(testData);
+          return deferred.promise;
+      });
+
+    }));
+
+    it('should get team info', function () {
+      TeamService.requestTeam()
+        .then(function(team){
+          expect(team.teamName).toBe('Your Givey Team');
+          expect(team.teamCta.text).toBe('Donate');
+        }
+      );
+      $scope.$apply();
+    });
 
   });
+
+  describe('Method: getTeamPercentage', function () {
+    it('should calculate team percentage', function() {
+        expect(TeamService.getTeamPercentage(14300, 15000)).toBe('95%');
+    });
+  });
+
+
 
 });

@@ -5,6 +5,7 @@
     "teamCta": {
         "text": "Donate"
     },
+    "teamTarget": 10000,
     "progressTitle": "So far we've raised",
     "teamMembersTitle": "Our team",
     "teamMembersTarget": 1500

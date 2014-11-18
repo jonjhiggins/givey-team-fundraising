@@ -47,6 +47,11 @@
         return deferred.promise;
       };
 
+      // Get team progress percentage from total raised vs target
+      TeamService.getTeamPercentage = function(teamTotal, teamTarget) {
+        return (teamTotal / teamTarget * 100).toFixed(0) + '%';
+      };
+
       return TeamService;
   }
 
