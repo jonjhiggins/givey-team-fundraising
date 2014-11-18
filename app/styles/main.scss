@@ -80,6 +80,7 @@
   .chart__bar {
     background-color: $color-chart-bar;
     height: 1em;
+    max-width: 100%;
   }
 
   .chart__total { margin-bottom: 0; }
