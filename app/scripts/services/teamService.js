@@ -49,10 +49,15 @@
 
       // Get team progress percentage from total raised vs target
       TeamService.getTeamPercentage = function(teamTotal, teamTarget) {
-        var teamPercentage = (teamTotal / teamTarget * 10).toFixed(0) + '%',
+        var teamPercentage = Math.round((teamTotal / teamTarget * 10), 2),
+            teamPercentageFormatted = teamPercentage + '%',
             deferred = $q.defer();
 
-        deferred.resolve(teamPercentage);
+        deferred.resolve({
+          teamPercentage: teamPercentage,
+          teamPercentageFormatted: teamPercentageFormatted
+        });
+
         return deferred.promise;
       };
 

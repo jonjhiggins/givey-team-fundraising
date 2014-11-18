@@ -40,15 +40,14 @@
           getTeamPercentage = function(teamTotal) {
             return  TeamService
                       .getTeamPercentage(teamTotal, vm.team.teamTarget)
-                      .then(function(teamPercentage) {
-                        vm.team.teamPercentage = teamPercentage;
-                        return teamPercentage;
+                      .then(function(percentages) {
+                        vm.team.teamPercentage = percentages.teamPercentageFormatted;
+                        return percentages;
                       })
-                      .then(function(teamPercentage) {
-                        var teamPercentageRaw = parseInt(teamPercentage.replace('%', ''));
+                      .then(function(percentages) {
                         vm.team.chart = [
-                          { value : teamPercentageRaw, color : '#F7464A' },
-                          { value : 100 - teamPercentageRaw, color : '#EFEFEF' }
+                          { value : percentages.teamPercentage, color : '#F7464A' },
+                          { value : 100 - percentages.teamPercentage, color : '#EFEFEF' }
                         ];
                       });
           };
