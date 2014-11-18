@@ -43,7 +43,7 @@
             description = user.get('personalMessage'),
             image = user.get('avatarUrl'),
             imageThumb = image.replace('/upload/', '/upload/w_300,c_limit/'), // Resize large images
-            total = $filter('currency')(user.get('voiceTotal'), '£'),
+            total = $filter('giveyCurrency')(user.get('voiceTotal'), '£'),
             ctaHref = 'https://www.givey.com/' + giveyTag; // TODO: doesn't link to fundraiding page
 
         teamMembers.push({

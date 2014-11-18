@@ -11,6 +11,6 @@
 angular.module('giveyTeamFundraisingApp')
   .filter('giveyCurrency', function () {
     return function (input) {
-      return 'giveyCurrency filter: ' + input;
+      return '£' + (Math.round((input * 100) / 100) / 100).toFixed(2);
     };
   });
