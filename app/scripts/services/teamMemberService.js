@@ -9,7 +9,7 @@
    * Factory in the giveyTeamFundraisingApp.
    */
 
-  function TeamMemberService($http, $q) {
+  function TeamMemberService($http, $q, $filter) {
       /*jshint shadow:true*/
 
       var TeamMemberService = {},
@@ -43,7 +43,7 @@
             description = user.get('personalMessage'),
             image = user.get('avatarUrl'),
             imageThumb = image.replace('/upload/', '/upload/w_300,c_limit/'), // Resize large images
-            total = user.get('voiceTotal'),
+            total = $filter('currency')(user.get('voiceTotal'), '£'),
             ctaHref = 'https://www.givey.com/' + giveyTag; // TODO: doesn't link to fundraiding page
 
         teamMembers.push({
@@ -64,5 +64,5 @@
 
   angular
     .module('giveyTeamFundraisingApp')
-    .factory('TeamMemberService', ['$http', '$q', TeamMemberService]);
+    .factory('TeamMemberService', ['$http', '$q', '$filter', TeamMemberService]);
 })();
