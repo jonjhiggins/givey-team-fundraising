@@ -50,9 +50,9 @@
             description = user.get('personalMessage'),
             image = user.get('avatarUrl'),
             imageThumb = image.replace('/upload/', '/upload/w_300,c_limit/'), // Resize large images
-            totalRaw = user.get('voiceTotal'),
-            total = $filter('giveyCurrency')(totalRaw, '£'),
-            percentage = (totalRaw / teamMembersTarget).toFixed(0) + '%',
+            total = user.get('voiceTotal'),
+            totalFormatted = $filter('giveyCurrency')(total, '£'),
+            percentage = (total / teamMembersTarget).toFixed(0) + '%',
             ctaHref = 'https://www.givey.com/' + giveyTag; // TODO: doesn't link to fundraiding page
 
         teamMembers.push({
@@ -61,6 +61,7 @@
           image: image,
           imageThumb: imageThumb,
           total: total,
+          totalFormatted: totalFormatted,
           percentage: percentage,
           cta: {
             href: ctaHref
