@@ -16,14 +16,13 @@
           deferred = $q.defer(),
           teamMembers = [];
 
-      TeamMemberService.requestTeamMembers = function() {
+      TeamMemberService.requestTeamMembers = function(giveyBusiness) {
 
         // Load Givey - move to separate service
         var Givey = new GiveyApp();
 
-        Givey.find('business', 'neteffekt')
+        Givey.find('business', giveyBusiness)
           .then(this.getTeamMembers);
-
         return deferred.promise;
       };
 

@@ -9,18 +9,28 @@
    * Controller of the giveyTeamFundraisingApp
    */
 
-  var MainCtrl = function($scope, $rootScope, TeamService, TeamMemberService) {
+  var MainCtrl = function($scope, $rootScope, $q, TeamService, TeamMemberService) {
 
-      var vm = this;
+      var vm = this,
+          loadTeam = function() {
+            return TeamService
+                    .requestTeam()
+                    .then(function(team) {
+                      vm.team = team;
+                      $rootScope.siteName = team.teamName;
+                      return team.giveyBusiness;
+                    });
+          },
+          loadTeamMembers = function(giveyBusiness) {
+            return TeamMemberService
+                    .requestTeamMembers(giveyBusiness)
+                    .then(function(teamMembers) {
+                      vm.teamMembers = teamMembers;
+                    });
+          };
 
-      TeamService.requestTeam().then(function(team){
-        vm.team = team;
-        $rootScope.siteName = team.teamName;
-      });
-
-      TeamMemberService.requestTeamMembers().then(function(teamMembers){
-        vm.teamMembers = teamMembers;
-      });
+      loadTeam()
+        .then(loadTeamMembers);
 
   };
 
