@@ -42,6 +42,10 @@
                       .getTeamPercentage(teamTotal, vm.team.teamTarget)
                       .then(function(teamPercentage) {
                         vm.team.teamPercentage = teamPercentage;
+                        return teamPercentage;
+                      })
+                      .then(function(teamPercentage) {
+                        var teamPercentageRaw = parseInt(teamPercentage.replace('%', ''));
                       });
           };
 

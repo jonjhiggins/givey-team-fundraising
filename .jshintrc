@@ -21,6 +21,7 @@
   "globals": {
     "angular": false,
     "GiveyApp": false,
-    "$": false
+    "$": false,
+    "Chart": false
   }
 }
