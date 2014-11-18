@@ -26,11 +26,20 @@
                     .requestTeamMembers(team)
                     .then(function(teamMembers) {
                       vm.teamMembers = teamMembers;
+                      return teamMembers;
+                    });
+          },
+          getTeamTotal = function(teamMembers) {
+            return TeamService
+                    .getTeamTotal(teamMembers)
+                    .then(function(teamTotalFormatted) {
+                      vm.team.teamTotalFormatted = teamTotalFormatted;
                     });
           };
 
       loadTeam()
-        .then(loadTeamMembers);
+        .then(loadTeamMembers)
+        .then(getTeamTotal);
 
   };
 
