@@ -13,30 +13,34 @@
       /*jshint shadow:true*/
 
       var TeamMemberService = {},
-          deferred = $q.defer(),
           teamMembers = [],
           teamMembersTarget = 0;
 
       TeamMemberService.requestTeamMembers = function(team) {
 
-        var Givey = new GiveyApp();
-
         teamMembersTarget = team.teamMembersTarget;
 
-        Givey.find('business', team.giveyBusiness)
-          .then(this.getTeamMembers);
+        var Givey = new GiveyApp(),
+            deferred = $q.defer(),
+            loadBusiness = function(team) {
+              return Givey
+                      .find('business', team.giveyBusiness)
+                      .then(function(business) {
+                        return business.get('confirmedEmployees');
+                      });
+            },
+            loadTeamMembers = function(employees) {
+              return $.each(employees, TeamMemberService.processTeamMember);
+            },
+            resolve = function() {
+              return deferred.resolve(teamMembers);
+            };
+
+        loadBusiness(team)
+          .then(loadTeamMembers)
+          .then(resolve);
+
         return deferred.promise;
-      };
-
-      TeamMemberService.getTeamMembers = function(business) {
-
-        business.get('confirmedEmployees')
-          .then(function (employees) {
-            $.each(employees, TeamMemberService.processTeamMember);
-          })
-          .then(function() {
-            deferred.resolve(teamMembers);
-          });
       };
 
       TeamMemberService.processTeamMember = function(_, user) {
