@@ -20,6 +20,7 @@
 
           $http.get(url)
             .success(function(data) {
+                data.teamCta.href = 'https://givey.com/' + data.giveyBusiness;
                 deferred.resolve(data);
             })
             .error(function() {

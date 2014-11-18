@@ -3,12 +3,9 @@
     "teamName": "Your Givey Team",
     "teamDescription": "Lorem ipsum",
     "teamCta": {
-        "text": "Donate",
-        "href": "http://givey.com"
+        "text": "Donate"
     },
     "progressTitle": "So far we've raised",
-    "progressTotal": "£1000",
-    "progressPercentage": "50%",
     "teamMembersTitle": "Our team",
     "teamMembersTarget": 1500
 }
