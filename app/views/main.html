@@ -35,8 +35,8 @@
     </header>
     <ul class="team-members__team-member-list">
       <li class="team-member" ng-repeat="teamMember in main.teamMembers">
-        <img ng-src="{{ teamMember.image }}" alt="" class="team-member__image">
-        <h3 class="team-member__name">{{ teamMember.name }}</h3>
+        <img ng-src="{{ teamMember.imageThumb }}" alt="" class="team-member__image">
+        <h3 class="team-member__full-name">{{ teamMember.fullName }}</h3>
         <p class="team-member__description">{{ teamMember.description }}</p>
         <figure class="area-chart">
           <div class="chart"><div class="chart__bar" style="width: {{ teamMember.percentage }}"></div></div>

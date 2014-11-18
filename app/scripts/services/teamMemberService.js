@@ -12,22 +12,59 @@
   function TeamMemberService($http, $q) {
       /*jshint shadow:true*/
 
-      var TeamMemberService = {};
+      var TeamMemberService = {},
+          deferred = $q.defer(),
+          teamMembers = [];
+
+      var calculatePercent = function() {
+        return null;
+      };
 
       TeamMemberService.requestTeamMembers = function() {
-          var deferred = $q.defer(),
-              url = '/data/teamMembers.json';
 
-          $http.get(url)
-            .success(function(data) {
-                deferred.resolve(data);
-            })
-            .error(function() {
-                deferred.resolve([]);
-            });
+        // Load Givey - move to separate service
+        var Givey = new GiveyApp();
 
-          return deferred.promise;
+        Givey.find('business', 'neteffekt')
+          .then(this.getTeamMembers);
+
+        return deferred.promise;
       };
+
+      TeamMemberService.getTeamMembers = function(business) {
+
+        business.get('confirmedEmployees')
+          .then(function (employees) {
+            $.each(employees, TeamMemberService.processTeamMember);
+          })
+          .then(function() {
+            deferred.resolve(teamMembers);
+          });
+      };
+
+      TeamMemberService.processTeamMember = function(_, user) {
+        var fullName = user.get('fullName'),
+            giveyTag = user.get('giveyTag'),
+            description = user.get('personalMessage'),
+            image = user.get('avatarUrl'),
+            imageThumb = image.replace('/upload/', '/upload/w_300,c_limit/'), // Resize large images
+            total = user.get('voiceTotal'),
+            percentage = calculatePercent(),
+            ctaHref = 'https://www.givey.com/' + giveyTag; // TODO: doesn't link to fundraiding page
+
+        teamMembers.push({
+          fullName: fullName,
+          description: description,
+          image: image,
+          imageThumb: imageThumb,
+          total: total,
+          percentage: percentage,
+          cta: {
+            href: ctaHref
+          }
+        });
+      };
+
 
       return TeamMemberService;
   }
