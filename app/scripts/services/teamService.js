@@ -42,14 +42,18 @@
         }, teamTotal);
 
         teamTotalFormatted = $filter('giveyCurrency')(teamTotal, '£');
-        deferred.resolve(teamTotalFormatted);
+        deferred.resolve({teamTotal: teamTotal, teamTotalFormatted: teamTotalFormatted});
 
         return deferred.promise;
       };
 
       // Get team progress percentage from total raised vs target
       TeamService.getTeamPercentage = function(teamTotal, teamTarget) {
-        return (teamTotal / teamTarget * 100).toFixed(0) + '%';
+        var teamPercentage = (teamTotal / teamTarget * 10).toFixed(0) + '%',
+            deferred = $q.defer();
+
+        deferred.resolve(teamPercentage);
+        return deferred.promise;
       };
 
       return TeamService;

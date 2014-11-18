@@ -33,7 +33,8 @@ describe('Service: TeamService', function () {
     }));
 
     it('should get team info', function () {
-      TeamService.requestTeam()
+      TeamService
+        .requestTeam()
         .then(function(team){
           expect(team.teamName).toBe('Your Givey Team');
           expect(team.teamCta.text).toBe('Donate');
@@ -46,7 +47,12 @@ describe('Service: TeamService', function () {
 
   describe('Method: getTeamPercentage', function () {
     it('should calculate team percentage', function() {
-        expect(TeamService.getTeamPercentage(14300, 15000)).toBe('95%');
+        TeamService
+          .getTeamPercentage(14300, 15000)
+          .then(function(teamPercentage) {
+            expect(teamPercentage).toBe('95%');
+          });
+        $scope.$apply();
     });
   });
 

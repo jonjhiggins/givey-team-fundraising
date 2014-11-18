@@ -32,14 +32,23 @@
           getTeamTotal = function(teamMembers) {
             return TeamService
                     .getTeamTotal(teamMembers)
-                    .then(function(teamTotalFormatted) {
-                      vm.team.teamTotalFormatted = teamTotalFormatted;
+                    .then(function(totals) {
+                      vm.team.teamTotalFormatted = totals.teamTotalFormatted;
+                      return totals.teamTotal;
                     });
+          },
+          getTeamPercentage = function(teamTotal) {
+            return  TeamService
+                      .getTeamPercentage(teamTotal, vm.team.teamTarget)
+                      .then(function(teamPercentage) {
+                        vm.team.teamPercentage = teamPercentage;
+                      });
           };
 
       loadTeam()
         .then(loadTeamMembers)
-        .then(getTeamTotal);
+        .then(getTeamTotal)
+        .then(getTeamPercentage);
 
   };
 
