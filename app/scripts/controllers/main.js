@@ -34,6 +34,7 @@
             return TeamService
                     .getTeamTotal(teamMembers)
                     .then(function(totals) {
+                      vm.team.teamTotal = totals.teamTotal;
                       vm.team.teamTotalFormatted = totals.teamTotalFormatted;
                       return totals.teamTotal;
                     });

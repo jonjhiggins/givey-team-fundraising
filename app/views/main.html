@@ -23,7 +23,7 @@
     <div class="area-progress">
       <div class="area-progress__metrics">
         <div class="metrics">
-          <h2 class="h1 metrics__total">{{ main.team.teamTotalFormatted }}</h2>
+          <h2 class="h1 metrics__total"><span count-up total="main.team.teamTotal">{{ main.team.teamTotalFormatted }}</span></h2>
         </div>
       </div>
       <div class="area-progress__chart">
@@ -52,7 +52,7 @@
           <figure class="chart chart--bar">
             <div class="chart__axis"><div class="chart__bar" style="width: {{ teamMember.percentage }}"></div></div>
             <figcaption>
-              <h3 class="chart__total">{{ teamMember.totalFormatted }}</h3>
+              <h3 class="chart__total" count-up total="teamMember.total" >{{ teamMember.totalFormatted }}</h3>
               <p class="chart__percentage">raised ({{ teamMember.percentage }})</p>
             </figcaption>
           </figure>
