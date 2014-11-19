@@ -116,11 +116,8 @@
     @extend %strech;
     margin: 0;
     padding: 0;
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    background-size: cover;
+    background-position: 50% 50%;
   }
 
   .section__content {
@@ -130,10 +127,23 @@
     justify-content: center;
   }
 
-  .section__aligner {
+  .section--team {
+    height: 100vh;
+    box-sizing: border-box;
+    padding-top: 0;
+    overflow: hidden;
 
+    // VH issue in iOS https://gist.github.com/pburtchaell/e702f441ba9b3f76f587
+    @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait){
+      height: 1024px;
+    }
+    @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape){
+      height: 1024px;
+    }
+    @media screen and (device-aspect-ratio: 40/71) {
+      height: 500px;
+    }
   }
-
 // Section: Team
 // ============================================
 

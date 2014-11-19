@@ -17,6 +17,7 @@
                     .requestTeam()
                     .then(function(team) {
                       vm.team = team;
+                      vm.team.backgroundStyle = { 'background-image': 'url(' + team.background  + ')'};
                       $rootScope.siteName = team.teamName;
                       return team;
                     });
