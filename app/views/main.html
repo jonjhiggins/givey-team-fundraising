@@ -24,7 +24,7 @@
       <canvas chart chart-type="Doughnut" chart-data="main.team.chart" class="chart chart--doughnut" width="300" height="300"></canvas>
       <figcaption>
         <h4 class="chart__total">{{ main.team.teamTotalFormatted }}</h4>
-        <h6 class="chart__percentage">({{ main.team.teamPercentage }})</h6>
+        <p class="chart__percentage">({{ main.team.teamPercentage }})</p>
       </figcaption>
       
     </div>
@@ -45,7 +45,7 @@
           <div class="chart chart--bar"><div class="chart__bar" style="width: {{ teamMember.percentage }}"></div></div>
           <figcaption>
             <h4 class="chart__total">{{ teamMember.totalFormatted }}</h4>
-            <h6 class="chart__percentage">raised ({{ teamMember.percentage }})</h6>
+            <p class="chart__percentage">raised ({{ teamMember.percentage }})</p>
           </figcaption>
         </figure>
         <a href="{{ teamMember.cta.href }}" class="btn btn--primary">{{ main.team.teamCta.text }}</a>

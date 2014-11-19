@@ -1,34 +1,8 @@
 // bower:scss
 // endbower
 
-
-// Mixins
-// ============================================
-
-  %clearfix {
-    &:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-  }
-
-  %strech {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-  }
-
-// Variables
-// ============================================
-
-  $color-border: #CCC;
-  $color-chart-bar: #999;
-  $color-button: #999;
-
-  $border-radius: 3px;
+@import 'variables';
+@import 'mixins';
 
 // Layout: Global
 // ============================================
@@ -37,6 +11,8 @@
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     margin: 0;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
   }
 
   .layout-constrain {
@@ -53,6 +29,33 @@
     background: #ccc;
     color: #000;
     padding: 0.2em 0;
+  }
+
+// Typography
+// ============================================
+
+  h1 {
+    font-size: $h1-font-size;
+    line-height: $h1-line-height;
+    margin: $h1-margin-top 0 $h1-margin-bottom;
+  }
+
+  h2 {
+    font-size: $h2-font-size;
+    line-height: $h2-line-height;
+    margin: $h2-margin-top 0 $h2-margin-bottom;
+  }
+
+  h3 {
+    font-size: $h3-font-size;
+    line-height: $h3-line-height;
+    margin: $h3-margin-top 0 $h3-margin-bottom;
+  }
+
+  h4 {
+    font-size: $h4-font-size;
+    line-height: $h4-line-height;
+    margin: $h4-margin-top 0 $h4-margin-bottom;
   }
 
 // Buttons
@@ -128,6 +131,7 @@
   }
 
   .section--team {
+    height: 400px;
     height: 100vh;
     box-sizing: border-box;
     padding-top: 0;
