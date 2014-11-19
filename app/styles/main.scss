@@ -99,8 +99,7 @@
   .btn,
   a.btn {
     display: inline-block;
-    padding: 0.5em;
-    margin-bottom: 1em;
+    margin-bottom: $base-line-height;
     border: $border-size solid $color-button;
     color: $color-button;
     border-radius: $border-radius;
@@ -139,19 +138,34 @@
 // Charts
 // ============================================
 
-  .chart { display: block; }
+  .chart {
+    display: block;
+    margin-bottom: $base-line-height;
+  }
 
   .chart--bar {
-    border: $border-size solid $color-border;
-    padding: 0.2em;
-    margin-bottom: 1em;
+
+    .chart__axis {
+      border: $border-size solid $color-border;
+      border-radius: $border-radius;
+      padding: $base-line-height / 4 ;
+      margin-bottom: $base-line-height;
+    }
+
+    .chart__bar {
+      background-color: $color-chart-bar;
+      height: $base-line-height;
+      max-width: 100%;
+    }
+
+    .chart__total { margin-bottom: 0 }
+    .chart__percentage {
+      margin: $base-line-height / 4 0 0;
+      color: $color-text-light;
+    }
   }
 
-  .chart__bar {
-    background-color: $color-chart-bar;
-    height: 1em;
-    max-width: 100%;
-  }
+
 
 // Sections
 // ============================================
@@ -235,7 +249,6 @@
 
     .chart__percentage {
       font-weight: normal;
-      margin-top: 0.5em;
       position: absolute;
       top: 50%;
       margin: 0;
@@ -294,11 +307,11 @@
   .team-members__team-member-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 1em;
+    margin: 0 0 $base-line-height;;
   }
 
   .team-member {
-    margin: 0 0 1em;
+    margin: 0 0 $base-line-height;
     border-bottom: $border-size dotted $color-border;
 
     &:last-child { border-bottom: 0; }
