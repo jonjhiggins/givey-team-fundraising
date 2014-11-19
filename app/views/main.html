@@ -43,18 +43,22 @@
     </header>
     <ul class="team-members__team-member-list">
       <li class="team-member" ng-repeat="teamMember in main.teamMembers">
-        <img ng-src="{{ teamMember.imageThumb }}" alt="" class="team-member__image">
-        <h3 class="team-member__full-name">{{ teamMember.fullName }}</h3>
-        <p class="team-member__description">{{ teamMember.description }}</p>
-        <figure class="chart chart--bar">
-          <div class="chart__axis"><div class="chart__bar" style="width: {{ teamMember.percentage }}"></div></div>
-          <figcaption>
-            <h3 class="chart__total">{{ teamMember.totalFormatted }}</h3>
-            <p class="chart__percentage">raised ({{ teamMember.percentage }})</p>
-          </figcaption>
-        </figure>
-        <div class="area-btn">
-          <a href="{{ teamMember.cta.href }}" class="btn">{{ main.team.teamCta.text }}</a>
+        <div class="team-member__context">
+          <figure class="team-member__image">
+            <img ng-src="{{ teamMember.imageThumb }}" alt="">
+          </figure>
+          <h3 class="team-member__full-name">{{ teamMember.fullName }}</h3>
+          <p class="team-member__description">{{ teamMember.description }}</p>
+          <figure class="chart chart--bar">
+            <div class="chart__axis"><div class="chart__bar" style="width: {{ teamMember.percentage }}"></div></div>
+            <figcaption>
+              <h3 class="chart__total">{{ teamMember.totalFormatted }}</h3>
+              <p class="chart__percentage">raised ({{ teamMember.percentage }})</p>
+            </figcaption>
+          </figure>
+          <div class="area-btn">
+            <a href="{{ teamMember.cta.href }}" class="btn">{{ main.team.teamCta.text }}</a>
+          </div>
         </div>
       </li>
     </ul>
