@@ -176,6 +176,8 @@
     font-weight: normal;
     color: $color-text-light;
     margin: $h2-mobile-margin-top 0;
+    border-bottom: 1px solid;
+    display: inline-block;
 
     @media only screen and (min-width: $bp-medium) {
       margin: $h2-margin-top 0;
