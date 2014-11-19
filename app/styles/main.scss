@@ -178,7 +178,7 @@
     &:after {
       content: '';
       @extend %strech;
-      background-color: #FFF;
+      background-color: #000;
       opacity: 0;
       animation: fadeInHalf 400ms 1200ms 1 forwards;
     }
@@ -278,6 +278,7 @@
 
   .section--team {
     position: relative;
+    color: #FFF;
   }
 
 // Section: Team Members
