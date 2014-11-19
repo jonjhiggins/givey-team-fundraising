@@ -23,7 +23,7 @@
       <h1 class="team-progress__title">{{ main.team.progressTitle }}</h1>
     </header>
     <div class="area-chart">
-      <canvas chart chart-type="Doughnut" chart-data="main.team.chart" chart-options="myOptions"></canvas>
+      <canvas chart chart-type="Doughnut" chart-data="main.team.chart" class="chart chart--doughnut" width="300" height="300"></canvas>
       <figcaption>
         <h4 class="chart__total">{{ main.team.teamTotalFormatted }}</h4>
         <h6 class="chart__percentage">({{ main.team.teamPercentage }})</h6>
@@ -44,7 +44,7 @@
         <h3 class="team-member__full-name">{{ teamMember.fullName }}</h3>
         <p class="team-member__description">{{ teamMember.description }}</p>
         <figure class="area-chart">
-          <div class="chart"><div class="chart__bar" style="width: {{ teamMember.percentage }}"></div></div>
+          <div class="chart chart--bar"><div class="chart__bar" style="width: {{ teamMember.percentage }}"></div></div>
           <figcaption>
             <h4 class="chart__total">{{ teamMember.totalFormatted }}</h4>
             <h6 class="chart__percentage">raised ({{ teamMember.percentage }})</h6>
