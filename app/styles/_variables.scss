@@ -3,12 +3,14 @@
 
   $color-border: #CCC;
   $color-chart-bar: #999;
-  $color-button: #999;
+  $color-link: #ff5155;
+  $color-button: #ff5155;
 
 // Sizes
 // ============================================
 
-  $border-radius: 3px;
+  $border-radius: 4px;
+  $border-size: 2px;
 
 // Breakpoints
 // ============================================
@@ -16,38 +18,6 @@
   $bp-small: 320 / 16 * 1rem;
   $bp-medium: 768 / 16 * 1rem;
   $bp-large: 1024 / 16 * 1rem;
-
-// Type: Mobile
-// Gridlover: 14 / 1.5 / 1.414
-// ============================================
-
-  $h1-mobile-font-size: 2.5rem;
-  $h1-mobile-line: 1.3125rem;
-  $h1-mobile-lines: 2;
-  $h1-mobile-line-height: $h1-mobile-line * $h1-mobile-lines;
-  $h1-mobile-margin-top: 2 * $h1-mobile-line;
-  $h1-mobile-margin-bottom: 1 * $h1-mobile-line;
-
-  $h2-mobile-font-size: 1.75rem;
-  $h2-mobile-line: 1.3125rem;
-  $h2-mobile-lines: 2;
-  $h2-mobile-line-height: $h2-mobile-line * $h2-mobile-lines;
-  $h2-mobile-margin-top: 2 * $h2-mobile-line;
-  $h2-mobile-margin-bottom: 1 * $h2-mobile-line;
-
-  $h3-mobile-font-size: 1.25rem;
-  $h3-mobile-line: 1.3125rem;
-  $h3-mobile-lines: 1;
-  $h3-mobile-line-height: $h3-mobile-line * $h3-mobile-lines;
-  $h3-mobile-margin-top: 1 * $h3-mobile-line;
-  $h3-mobile-margin-bottom: 1 * $h3-mobile-line;
-
-  $h4-mobile-font-size: 0.875rem;
-  $h4-mobile-line: 1.3125rem;
-  $h4-mobile-lines: 1;
-  $h4-mobile-line-height: $h4-mobile-line * $h4-mobile-lines;
-  $h4-mobile-margin-top: 1 * $h4-mobile-line;
-  $h4-mobile-margin-bottom: 1 * $h4-mobile-line;
 
 // Type: Non-mobile
 // Gridlover: 14 / 1.5 / 1.618
@@ -84,3 +54,35 @@
   $h4-line-height: $h4-line * $h4-lines;
   $h4-margin-top: 1 * $h4-line;
   $h4-margin-bottom: 1 * $h4-line;
+
+// Type: Mobile
+// Gridlover: 14 / 1.5 / 1.414
+// ============================================
+
+  $h1-mobile-font-size: 2.5rem;
+  $h1-mobile-line: 1.3125rem;
+  $h1-mobile-lines: 2;
+  $h1-mobile-line-height: $h1-mobile-line * $h1-mobile-lines;
+  $h1-mobile-margin-top: 2 * $h1-mobile-line;
+  $h1-mobile-margin-bottom: 1 * $h1-mobile-line;
+
+  $h2-mobile-font-size: 1.75rem;
+  $h2-mobile-line: 1.3125rem;
+  $h2-mobile-lines: 2;
+  $h2-mobile-line-height: $h2-mobile-line * $h2-mobile-lines;
+  $h2-mobile-margin-top: 2 * $h2-mobile-line;
+  $h2-mobile-margin-bottom: 1 * $h2-mobile-line;
+
+  $h3-mobile-font-size: 1.25rem;
+  $h3-mobile-line: 1.3125rem;
+  $h3-mobile-lines: 1;
+  $h3-mobile-line-height: $h3-mobile-line * $h3-mobile-lines;
+  $h3-mobile-margin-top: 1 * $h3-mobile-line;
+  $h3-mobile-margin-bottom: 1 * $h3-mobile-line;
+
+  $h4-mobile-font-size: 0.875rem;
+  $h4-mobile-line: 1.3125rem;
+  $h4-mobile-lines: 1;
+  $h4-mobile-line-height: $h4-mobile-line * $h4-mobile-lines;
+  $h4-mobile-margin-top: 1 * $h4-mobile-line;
+  $h4-mobile-margin-bottom: 1 * $h4-mobile-line;

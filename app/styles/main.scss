@@ -64,8 +64,8 @@
 
     @media only screen and (min-width: $bp-medium) {
       font-size: $h3-font-size;
-    line-height: $h3-line-height;
-    margin: $h3-margin-top 0 $h3-margin-bottom;
+      line-height: $h3-line-height;
+      margin: $h3-margin-top 0 $h3-margin-bottom;
     }
   }
 
@@ -83,33 +83,56 @@
 
   p { margin: $base-line-height 0; }
 
+  a { color: $color-link }
+
 // Buttons
 // ============================================
 
-  .btn {
-    display: block;
+  .btn,
+  a.btn {
+    display: inline-block;
     padding: 0.5em;
     margin-bottom: 1em;
-    border: 1px solid $color-button;
+    border: $border-size solid $color-button;
     color: $color-button;
     border-radius: $border-radius;
     text-decoration: none;
+    padding: $base-line-height / 2 $base-line-height * 2;
+    transition: all 400ms ease-out;
+
+    &:hover { background-color: lighten($color-button,30%); }
+    &:active { background-color: lighten($color-button,20%); }
   }
 
   .btn--lg {
-    padding: 1em;
+    font-size: $h3-mobile-font-size;
+    line-height: $h3-mobile-line-height;
+    margin: $h3-mobile-margin-top 0 $h3-mobile-margin-bottom;
+    padding: $h3-mobile-line / 2 $h3-mobile-line;
+
+    @media only screen and (min-width: $bp-medium) {
+      font-size: $h3-font-size;
+      line-height: $h3-line-height;
+      margin: $h3-margin-top 0 $h3-margin-bottom;
+      padding: $h3-line / 2 $h3-line * 3;
+    }
   }
 
-  .btn--primary {
+  .btn--primary,
+  a.btn--primary {
     background-color: $color-button;
     color: #FFF;
+    border-color: transparent;
+
+    &:hover { background-color: rgba($color-button,0.5); }
+    &:active { background-color: rgba(darken($color-button, 20%),0.5); }
   }
 
 // Charts
 // ============================================
 
   .chart--bar {
-    border: 1px solid $color-border;
+    border: $border-size solid $color-border;
     padding: 0.2em;
     margin-bottom: 1em;
   }
@@ -131,14 +154,10 @@
 // ============================================
 
   .section {
-    border-bottom: 1px solid $color-border;
+    border-bottom: $border-size solid $color-border;
   }
 
-  .section--bg {
-    position: relative;
-    padding-top: 56.25%;
-    padding-bottom: 0;
-  }
+  .section--bg { position: relative; }
 
   .section__bg {
     @extend %strech;
@@ -146,6 +165,16 @@
     padding: 0;
     background-size: cover;
     background-position: 50% 50%;
+
+    &:after {
+      content: '';
+      @extend %strech;
+      background-color: #FFF;
+      transition: opacity 400ms ease-out;
+      opacity: 0;
+
+      .section--ready & { opacity: 0.5; }
+    }
   }
 
   .section__content {
@@ -191,7 +220,7 @@
 
   .team-member {
     margin: 0 0 1em;
-    border-bottom: 1px dotted $color-border;
+    border-bottom: $border-size dotted $color-border;
 
     &:last-child { border-bottom: 0; }
   }

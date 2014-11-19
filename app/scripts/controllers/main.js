@@ -47,7 +47,7 @@
                       })
                       .then(function(percentages) {
                         vm.team.chart = [
-                          { value : percentages.teamPercentage, color : '#F7464A' },
+                          { value : percentages.teamPercentage, color : vm.team.chartColor },
                           { value : 100 - percentages.teamPercentage, color : '#EFEFEF' }
                         ];
                       });
