@@ -219,10 +219,12 @@
 
   .area-progress__metrics {
     margin-bottom: $base-line-height * 2;
-    border: $border-size solid $color-border;
-    border-radius: $border-radius;
 
-    .metrics {padding: $base-line-height 0; }
+    .metrics {
+      padding: $base-line-height 0;
+      border: $border-size solid $color-border;
+      border-radius: $border-radius;
+    }
     .metrics__total { margin: 0; }
   }
 
@@ -267,10 +269,13 @@
       display: flex;
 
       .metrics {
-        align-self: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 100%;
         padding: 0;
       }
+      .metrics__total { }
     }
   }
 
