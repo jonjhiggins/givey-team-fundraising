@@ -8,7 +8,7 @@
     "teamTarget": 100000,
     "background": "/images/team-background.jpg",
     "chartColor": "#F7464A",
-    "progressTitle": "So far we've raised",
+    "progressTitle": "So far we've raised...",
     "teamMembersTitle": "Our team",
     "teamMembersTarget": 15000
 }

@@ -14,10 +14,15 @@
     margin: 0;
     font-size: $base-font-size;
     line-height: $base-line-height;
+    color: $color-text-body;
   }
 
   .layout-constrain {
-    margin: 0 1em;
+    margin: 0 $base-line-height;
+
+    @media only screen and (min-width: $bp-medium) {
+      margin: 0 $base-line-height * 2;
+    }
   }
 
   img { max-width: 100%; }
@@ -34,7 +39,7 @@
 // Typography
 // ============================================
 
-  h1 {
+  h1, .h1 {
     font-size: $h1-mobile-font-size;
     line-height: $h1-mobile-line-height;
     margin: $h1-mobile-margin-top 0 $h1-mobile-margin-bottom;
@@ -132,6 +137,8 @@
 // Charts
 // ============================================
 
+  .chart { display: block; }
+
   .chart--bar {
     border: $border-size solid $color-border;
     padding: 0.2em;
@@ -144,18 +151,19 @@
     max-width: 100%;
   }
 
-  .chart__total { margin-bottom: 0; }
-
-  .chart__percentage {
-    font-weight: normal;
-    margin-top: 0.5em;
-  }
-
 // Sections
 // ============================================
 
-  .section {
-    border-bottom: $border-size solid $color-border;
+  .section { border-bottom: $border-size solid $color-border; }
+
+  .section__title {
+    font-weight: normal;
+    color: $color-text-light;
+    margin: $h2-mobile-margin-top 0;
+
+    @media only screen and (min-width: $bp-medium) {
+      margin: $h2-margin-top 0;
+    }
   }
 
   .section--bg { position: relative; }
@@ -201,6 +209,70 @@
       height: 500px;
     }
   }
+
+// Section: Team Progress
+// ============================================
+
+  .area-progress { margin-bottom: $base-line-height * 2; }
+
+  .area-progress__metrics {
+    margin-bottom: $base-line-height * 2;
+    border: $border-size solid $color-border;
+    border-radius: $border-radius;
+
+    .metrics {padding: $base-line-height 0; }
+    .metrics__total { margin: 0; }
+  }
+
+  .area-progress__chart {
+    .context-chart {
+      position: relative;
+    }
+
+    .chart__percentage {
+      font-weight: normal;
+      margin-top: 0.5em;
+      position: absolute;
+      top: 50%;
+      margin: 0;
+      width: 3em;
+      left: 50%;
+      height: 3em;
+      line-height: 3em;
+      margin-top: -1.5em;
+      margin-left: -1.5em;
+    }
+  }
+
+  @media only screen and (min-width: $bp-small-3) {
+    .area-progress {
+      display: flex;
+    }
+
+    .area-progress__chart,
+    .area-progress__metrics {
+      padding: 0 $base-line-height;
+      box-sizing: border-box;
+      width: 50%;
+      flex: 1;
+
+      &:first-child { padding-left: 0; }
+      &:last-child { padding-right: 0; }
+    }
+
+    .area-progress__metrics {
+      margin: 0;
+      display: flex;
+
+      .metrics {
+        align-self: center;
+        width: 100%;
+        padding: 0;
+      }
+    }
+  }
+
+
 // Section: Team
 // ============================================
 

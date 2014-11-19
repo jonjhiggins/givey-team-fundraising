@@ -18,15 +18,21 @@
 <section class="section section--team-progress">
   <div class="layout-constrain">
     <header>
-      <h2 class="team-progress__title">{{ main.team.progressTitle }}</h2>
+      <h2 class="section__title team-progress__title">{{ main.team.progressTitle }}</h2>
     </header>
-    <div class="area-chart">
-      <canvas chart chart-type="Doughnut" chart-data="main.team.chart" class="chart chart--doughnut" width="300" height="300"></canvas>
-      <figcaption>
-        <h3 class="chart__total">{{ main.team.teamTotalFormatted }}</h3>
-        <p class="chart__percentage">{{ main.team.teamPercentage }}</p>
-      </figcaption>
+    <div class="area-progress">
       
+      <div class="area-progress__metrics">
+        <div class="metrics">
+          <h2 class="h1 metrics__total">{{ main.team.teamTotalFormatted }}</h2>
+        </div>
+      </div>
+      <div class="area-progress__chart">
+        <div class="context-chart">
+          <canvas chart chart-type="Doughnut" chart-data="main.team.chart" class="chart chart--doughnut" width="300" height="300"></canvas>
+          <h2 class="chart__percentage">{{ main.team.teamPercentage }}</h2>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -34,7 +40,7 @@
 <section class="section section--team-members">
   <div class="layout-constrain">
     <header>
-      <h2 class="team-members__title">{{ main.team.teamMembersTitle }}</h2>
+      <h2 class="section__title team-members__title">{{ main.team.teamMembersTitle }}</h2>
     </header>
     <ul class="team-members__team-member-list">
       <li class="team-member" ng-repeat="teamMember in main.teamMembers">
