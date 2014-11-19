@@ -18,10 +18,12 @@
   }
 
   .layout-constrain {
-    margin: 0 $base-line-height;
+    margin: 0 auto;
+    padding: 0 $base-line-height;
+    max-width: $constrain;
 
     @media only screen and (min-width: $bp-medium) {
-      margin: 0 $base-line-height * 2;
+      padding: 0 $base-line-height * 2;
     }
   }
 

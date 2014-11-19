@@ -8,12 +8,6 @@
   $color-text-body: #444444;
   $color-text-light: #999999;
 
-// Sizes
-// ============================================
-
-  $border-radius: 4px;
-  $border-size: 2px;
-
 // Breakpoints
 // ============================================
 
@@ -89,3 +83,10 @@
   $h4-mobile-line-height: $h4-mobile-line * $h4-mobile-lines;
   $h4-mobile-margin-top: 1 * $h4-mobile-line;
   $h4-mobile-margin-bottom: 1 * $h4-mobile-line;
+
+// Sizes
+// ============================================
+
+  $border-radius: 4px;
+  $border-size: 2px;
+  $constrain: 50 * $base-line-height;
