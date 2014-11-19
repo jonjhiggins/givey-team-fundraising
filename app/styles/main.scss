@@ -3,6 +3,7 @@
 
 @import 'variables';
 @import 'mixins';
+@import 'animations';
 
 // Layout: Global
 // ============================================
@@ -98,7 +99,7 @@
     border-radius: $border-radius;
     text-decoration: none;
     padding: $base-line-height / 2 $base-line-height * 2;
-    transition: all 400ms ease-out;
+    transition: background-color 400ms ease-out, font-size 400ms ease-out, line-height 400ms ease-out, padding 400ms ease-out;
 
     &:hover { background-color: lighten($color-button,30%); }
     &:active { background-color: lighten($color-button,20%); }
@@ -170,10 +171,8 @@
       content: '';
       @extend %strech;
       background-color: #FFF;
-      transition: opacity 400ms ease-out;
       opacity: 0;
-
-      .section--ready & { opacity: 0.5; }
+      animation: fadeInHalf 400ms 1200ms 1 forwards;
     }
   }
 
