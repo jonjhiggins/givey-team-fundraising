@@ -9,8 +9,9 @@
  * Filter in the giveyTeamFundraisingApp.
  */
 angular.module('giveyTeamFundraisingApp')
-  .filter('giveyCurrency', function () {
+  .filter('giveyCurrency', function ($filter) {
     return function (input) {
-      return '£' + (Math.round((input * 100) / 100) / 100).toFixed(2);
+      var amount = (Math.round((input * 100) / 100) / 100);
+      return $filter('currency')(amount, '£').slice(0, -3);
     };
   });
