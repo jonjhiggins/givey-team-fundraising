@@ -5,10 +5,10 @@
     "teamCta": {
         "text": "Donate"
     },
-    "teamTarget": 100000,
+    "teamTarget": 1000000,
     "background": "/images/team-background.jpg",
     "chartColor": "#F7464A",
     "progressTitle": "So far we've raised...",
     "teamMembersTitle": "Our team",
-    "teamMembersTarget": 15000
+    "teamMembersTarget": 150000
 }

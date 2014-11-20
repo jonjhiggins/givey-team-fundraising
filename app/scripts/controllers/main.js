@@ -9,7 +9,7 @@
    * Controller of the giveyTeamFundraisingApp
    */
 
-  var MainCtrl = function($scope, $rootScope, $q, TeamService, TeamMemberService) {
+  var MainCtrl = function($scope, $rootScope, $q, $filter, TeamService, TeamMemberService) {
 
       var vm = this,
           loadTeam = function() {
@@ -36,9 +36,17 @@
                     .then(function(totals) {
                       vm.team.teamTotal = totals.teamTotal;
                       vm.team.teamTotalFormatted = totals.teamTotalFormatted;
+                      // TODO: move to service
+
+                      var remaining = Math.max(vm.team.teamTarget - totals.teamTotal, 0);
                       vm.team.chart = [
-                          { value : totals.teamTotal, color : vm.team.chartColor, label: totals.teamTotalFormatted },
-                          { value : vm.team.teamTarget, color : '#EFEFEF', label: vm.team.teamTargetFormatted }
+                          { value : totals.teamTotal,
+                            color : vm.team.chartColor,
+                            label: totals.teamTotalFormatted + ' raised' },
+                          { value : remaining,
+                            color : '#EFEFEF',
+                            label: $filter('giveyCurrency')(remaining, '£')  + ' to go'
+                          }
                         ];
                       return totals.teamTotal;
                     });

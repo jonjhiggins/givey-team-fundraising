@@ -12,7 +12,8 @@ describe('Filter: giveyCurrency', function () {
   }));
 
   it('should return currency formatted properly"', function () {
-    expect(giveyCurrency(90210)).toBe('£902.10');
+    expect(giveyCurrency(90210)).toBe('£902');
+    expect(giveyCurrency(90290)).toBe('£902');
   });
 
 });

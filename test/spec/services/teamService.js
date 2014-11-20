@@ -49,8 +49,9 @@ describe('Service: TeamService', function () {
     it('should calculate team percentage', function() {
         TeamService
           .getTeamPercentage(14300, 15000)
-          .then(function(teamPercentage) {
-            expect(teamPercentage).toBe('95%');
+          .then(function(percentages) {
+            expect(percentages.teamPercentage).toBe(95);
+            expect(percentages.teamPercentageFormatted).toBe('95%');
           });
         $scope.$apply();
     });

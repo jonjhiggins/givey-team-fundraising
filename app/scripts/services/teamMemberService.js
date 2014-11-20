@@ -52,7 +52,7 @@
             imageThumb = image.replace('/upload/', '/upload/w_300,c_limit/'), // Resize large images
             total = user.get('voiceTotal'),
             totalFormatted = $filter('giveyCurrency')(total, '£'),
-            percentage = (total / teamMembersTarget * 10).toFixed(0) + '%',
+            percentage = (total / teamMembersTarget * 100).toFixed(0) + '%',
             ctaHref = 'https://www.givey.com/' + giveyTag; // TODO: doesn't link to fundraiding page
 
         teamMembers.push({

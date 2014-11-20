@@ -20,9 +20,10 @@
               url = '/data/team.json';
 
           $http.get(url)
-            .success(function(data) {
-                data.teamCta.href = 'https://givey.com/' + data.giveyBusiness;
-                deferred.resolve(data);
+            .success(function(team) {
+                team.teamCta.href = 'https://givey.com/' + team.giveyBusiness;
+                team.teamTargetFormatted = $filter('giveyCurrency')(team.teamTarget, '£');
+                deferred.resolve(team);
             })
             .error(function() {
                 deferred.resolve([]);
@@ -49,7 +50,7 @@
 
       // Get team progress percentage from total raised vs target
       TeamService.getTeamPercentage = function(teamTotal, teamTarget) {
-        var teamPercentage = Math.round((teamTotal / teamTarget * 10), 2),
+        var teamPercentage = Math.round((teamTotal / teamTarget * 100), 2),
             teamPercentageFormatted = teamPercentage + '%',
             deferred = $q.defer();
 
