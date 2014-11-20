@@ -36,6 +36,10 @@
                     .then(function(totals) {
                       vm.team.teamTotal = totals.teamTotal;
                       vm.team.teamTotalFormatted = totals.teamTotalFormatted;
+                      vm.team.chart = [
+                          { value : totals.teamTotal, color : vm.team.chartColor, label: totals.teamTotalFormatted },
+                          { value : vm.team.teamTarget, color : '#EFEFEF', label: vm.team.teamTargetFormatted }
+                        ];
                       return totals.teamTotal;
                     });
           },
@@ -45,12 +49,6 @@
                       .then(function(percentages) {
                         vm.team.teamPercentage = percentages.teamPercentageFormatted;
                         return percentages;
-                      })
-                      .then(function(percentages) {
-                        vm.team.chart = [
-                          { value : percentages.teamPercentage, color : vm.team.chartColor },
-                          { value : 100 - percentages.teamPercentage, color : '#EFEFEF' }
-                        ];
                       });
           };
 

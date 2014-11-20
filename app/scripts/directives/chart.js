@@ -28,7 +28,10 @@
                 chartObj.destroy();
               }
               if ( value ) {
-                chartObj = chart[ $scope.type ]( $scope.data, { responsive : true} );
+                chartObj = chart[ $scope.type ]( $scope.data, { 
+                  responsive : true,
+                  tooltipTemplate: '<%if (label){%><%=label%><%}%>',
+                } );
               }
             }
           );

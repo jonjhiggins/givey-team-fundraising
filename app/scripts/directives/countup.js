@@ -24,7 +24,7 @@ angular.module('giveyTeamFundraisingApp')
             if ( value ) {
               var numAnim = new countUp(id, 0, (value / 100), 0, 1.5);
               $elem.addClass('count-up--currency');
-              numAnim.start()
+              numAnim.start();
             }
           }
         );
