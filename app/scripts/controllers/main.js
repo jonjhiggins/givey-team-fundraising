@@ -80,7 +80,7 @@
 
   angular
     .module('giveyTeamFundraisingApp')
-    .controller('MainCtrl', MainCtrl);
+    .controller('MainCtrl', [ '$scope', '$rootScope', '$q', '$filter', 'TeamService', 'TeamMemberService', MainCtrl ]);
 
 })();
 
