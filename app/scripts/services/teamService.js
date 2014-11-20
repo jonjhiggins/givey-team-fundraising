@@ -21,7 +21,7 @@
                 'text': 'Donate'
             },
             'teamTarget': 1000000,
-            'background': '/images/team-background.jpg',
+            'background': '//res.cloudinary.com/jon-higgins-ltd/image/upload/v1416496792/team-background_rw4rfq.jpg',
             'chartColor': '#F7464A',
             'progressTitle': 'So far we\'ve raised...',
             'teamMembersTitle': 'Our team',
