@@ -9,7 +9,7 @@
    * Factory in the giveyTeamFundraisingApp.
    */
 
-  function TeamService($http, $q, $filter) {
+  function TeamService($http, $q, $filter, $location) {
       /*jshint shadow:true*/
 
       var TeamService = {};
@@ -17,10 +17,17 @@
       // Get team info from JSON file
       TeamService.requestTeam = function() {
           var deferred = $q.defer(),
-              url = '/data/team.json';
+              url = '/data/team.json',
+              parameters = {
+                giveyBusiness: $location.search().giveyBusiness,
+                teamName: $location.search().teamName,
+              };
 
           $http.get(url)
             .success(function(team) {
+                // If URL parameters exist for values, override with them
+                team.giveyBusiness = parameters.giveyBusiness ? parameters.giveyBusiness : team.giveyBusiness;
+                team.teamName = parameters.teamName ? parameters.teamName : team.teamName;
                 team.teamCta.href = 'https://givey.com/' + team.giveyBusiness;
                 team.teamTargetFormatted = $filter('giveyCurrency')(team.teamTarget, '£');
                 deferred.resolve(team);
@@ -67,5 +74,5 @@
 
   angular
     .module('giveyTeamFundraisingApp')
-    .factory('TeamService', ['$http', '$q', '$filter', TeamService]);
+    .factory('TeamService', ['$http', '$q', '$filter', '$location', TeamService]);
 })();
