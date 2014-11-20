@@ -28,7 +28,7 @@
       </div>
       <div class="area-progress__chart">
         <div class="context-chart">
-          <canvas chart in-view="$inview && (main.inView.teamChart = true)" in-view-status="main.inView.teamChart" chart-type="Doughnut" chart-data="main.team.chart" class="chart chart--doughnut" width="300" height="300"></canvas>
+          <canvas chart in-view="main.inView.setProperty($inview, 'teamChart')" in-view-status="main.inView.teamChart" chart-type="Doughnut" chart-data="main.team.chart" class="chart chart--doughnut" width="300" height="300"></canvas>
           <h2 class="chart__percentage">{{ main.team.teamPercentage }}</h2>
         </div>
       </div>

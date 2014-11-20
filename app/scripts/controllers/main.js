@@ -60,14 +60,16 @@
                       });
           };
 
-      vm.inView = {
-        teamChart: false
-      };
-
       loadTeam()
         .then(loadTeamMembers)
         .then(getTeamTotal)
         .then(getTeamPercentage);
+
+      vm.inView = {
+        setProperty: function(inview, prop) {
+          this[prop] = inview;
+        }
+      };
 
   };
 
