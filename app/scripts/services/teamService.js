@@ -12,29 +12,39 @@
   function TeamService($http, $q, $filter, $location) {
       /*jshint shadow:true*/
 
-      var TeamService = {};
+      var TeamService = {},
+          TeamServiceDefaults = {
+            'giveyBusiness': 'neteffekt',
+            'teamName': 'A Givey Team',
+            'teamDescription': 'Raising funds for a charity',
+            'teamCta': {
+                'text': 'Donate'
+            },
+            'teamTarget': 1000000,
+            'background': '/images/team-background.jpg',
+            'chartColor': '#F7464A',
+            'progressTitle': 'So far we\'ve raised...',
+            'teamMembersTitle': 'Our team',
+            'teamMembersTarget': 150000
+          };
 
       // Get team info from JSON file
       TeamService.requestTeam = function() {
           var deferred = $q.defer(),
-              url = '/data/team.json',
+              team,
               parameters = {
                 giveyBusiness: $location.search().giveyBusiness,
                 teamName: $location.search().teamName,
               };
 
-          $http.get(url)
-            .success(function(team) {
-                // If URL parameters exist for values, override with them
-                team.giveyBusiness = parameters.giveyBusiness ? parameters.giveyBusiness : team.giveyBusiness;
-                team.teamName = parameters.teamName ? parameters.teamName : team.teamName;
-                team.teamCta.href = 'https://givey.com/' + team.giveyBusiness;
-                team.teamTargetFormatted = $filter('giveyCurrency')(team.teamTarget, '£');
-                deferred.resolve(team);
-            })
-            .error(function() {
-                deferred.resolve([]);
-            });
+          team = TeamServiceDefaults;
+
+          // If URL parameters exist for values, override with them
+          team.giveyBusiness = parameters.giveyBusiness ? parameters.giveyBusiness : team.giveyBusiness;
+          team.teamName = parameters.teamName ? parameters.teamName : team.teamName;
+          team.teamCta.href = 'https://givey.com/' + team.giveyBusiness;
+          team.teamTargetFormatted = $filter('giveyCurrency')(team.teamTarget, '£');
+          deferred.resolve(team);
 
           return deferred.promise;
       };
