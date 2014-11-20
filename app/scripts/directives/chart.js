@@ -9,6 +9,46 @@
    */
 
   function chartDirective() {
+
+    var postLink = function($scope, $elem) {
+      var ctx = $elem[0].getContext( '2d' ),
+          chart = new Chart( ctx ),
+          chartObj,
+          dataAvailable,
+          inViewStatus;
+
+      $scope.$watch(
+        'data', function ( value ) {
+          dataAvailable = value;
+          renderChart($scope, $elem, chart);
+        }
+      );
+
+      $scope.$watch(
+        'inViewStatus', function( status ) {
+          inViewStatus = status;
+          renderChart($scope, $elem, chart);
+        }
+      );
+
+      var renderChart = function($scope, $elem, chart) {
+        if (dataAvailable && inViewStatus) {
+
+          if ( chartObj ) {
+            chartObj.destroy();
+          }
+
+          chartObj = chart[ $scope.type ]( $scope.data, {
+            responsive : true,
+            tooltipTemplate: '<%if (label){%><%=label%><%}%>',
+          } );
+
+          dataAvailable = false;
+        }
+      };
+
+    };
+
     return {
         restrict: 'A',
         scope: {
@@ -16,43 +56,8 @@
           inViewStatus: '=inViewStatus',
           type: '@chartType'
         },
-        link: link
+        link: postLink
       };
-  }
-
-  var chartObj,
-      dataAvailable,
-      inViewStatus;
-
-  function link($scope, $elem) {
-    var ctx = $elem[0].getContext( '2d' ),
-      chart = new Chart( ctx );
-
-    $scope.$watch(
-      'data', function ( value ) {
-        dataAvailable = value;
-        renderChart($scope, $elem, chart);
-      }
-    );
-
-    $scope.$watch(
-      'inViewStatus', function( status ) {
-        inViewStatus = status;
-        renderChart($scope, $elem, chart);
-      }
-    );
-  }
-
-  function renderChart($scope, $elem, chart) {
-    if (dataAvailable && inViewStatus) {
-      if ( chartObj ) {
-        chartObj.destroy();
-      }
-      chartObj = chart[ $scope.type ]( $scope.data, {
-        responsive : true,
-        tooltipTemplate: '<%if (label){%><%=label%><%}%>',
-      } );
-    }
   }
 
   angular.module('giveyTeamFundraisingApp')
