@@ -336,8 +336,12 @@
     display: flex;
     margin: 0 auto;
     align-items: center;
+    justify-content: center;
 
-    img { border-radius: $border-radius; }
+    img {
+      border-radius: $border-radius;
+      max-height: 100%;
+    }
   }
 
   @media only screen and (min-width: $bp-small-2) {
