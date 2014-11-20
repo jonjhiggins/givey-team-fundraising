@@ -18,6 +18,7 @@
 
       TeamMemberService.requestTeamMembers = function(team) {
 
+        teamMembers = [];
         teamMembersTarget = team.teamMembersTarget;
 
         var Givey = new GiveyApp(),
