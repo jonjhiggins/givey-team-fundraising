@@ -28,7 +28,7 @@
       </div>
       <div class="area-progress__chart">
         <div class="context-chart">
-          <canvas chart chart-type="Doughnut" chart-data="main.team.chart" class="chart chart--doughnut" width="300" height="300"></canvas>
+          <canvas chart chart-type="Doughnut" chart-data="main.team.chart" class="chart chart--doughnut wow fadeIn" width="300" height="300"></canvas>
           <h2 class="chart__percentage">{{ main.team.teamPercentage }}</h2>
         </div>
       </div>
@@ -42,7 +42,7 @@
       <h2 class="section__title team-members__title">{{ main.team.teamMembersTitle }}</h2>
     </header>
     <ul class="team-members__team-member-list">
-      <li class="team-member" ng-repeat="teamMember in main.teamMembers">
+      <li class="team-member wow fadeIn" ng-repeat="teamMember in main.teamMembers">
         <div class="team-member__context">
           <figure class="team-member__image">
             <img ng-src="{{ teamMember.imageThumb }}" alt="">

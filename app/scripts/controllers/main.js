@@ -11,6 +11,10 @@
 
   var MainCtrl = function($scope, $rootScope, $q, $filter, TeamService, TeamMemberService) {
 
+      // TODO: move to directive
+      var wow = new WOW();
+      wow.init();
+
       var vm = this,
           loadTeam = function() {
             return TeamService
