@@ -42,7 +42,7 @@
       <h2 class="section__title team-members__title">{{ main.team.teamMembersTitle }}</h2>
     </header>
     <ul class="team-members__team-member-list">
-      <li class="team-member" ng-repeat="teamMember in main.teamMembers">
+      <li class="team-member in-view" in-view="main.inView.animate($inview, $event)" ng-repeat="teamMember in main.teamMembers">
         <div class="team-member__context">
           <figure class="team-member__image">
             <img ng-src="{{ teamMember.imageThumb }}" alt="">

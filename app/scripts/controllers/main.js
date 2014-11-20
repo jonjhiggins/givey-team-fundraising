@@ -68,6 +68,11 @@
       vm.inView = {
         setProperty: function(inview, prop) {
           this[prop] = inview;
+        },
+        animate: function(inview, event) {
+          if (inview) {
+            $(event.inViewTarget).removeClass('in-view').addClass('animated').addClass('fadeIn');
+          }
         }
       };
 

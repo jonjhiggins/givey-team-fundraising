@@ -1,6 +1,10 @@
 // Animations
 // ============================================
 
+.in-view {
+	visibility: hidden !important;
+}
+
 .animated {
   animation-duration: 1s;
   animation-fill-mode: both;
