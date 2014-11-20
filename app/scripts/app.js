@@ -12,12 +12,7 @@
 
 angular
   .module('giveyTeamFundraisingApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
     'ngRoute',
-    'ngSanitize',
-    'ngTouch',
     'angular-inview'
   ])
   .config(function ($routeProvider) {
