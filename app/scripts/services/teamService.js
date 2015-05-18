@@ -28,7 +28,7 @@
             'teamMembersTarget': 150000
           };
 
-      // Get team info from JSON file
+      // Get team info from URL or TeamServiceDefaults
       TeamService.requestTeam = function() {
           var deferred = $q.defer(),
               team,

@@ -12,6 +12,10 @@
   var MainCtrl = function($scope, $rootScope, $q, $filter, TeamService, TeamMemberService) {
 
       var vm = this,
+          handleError = function() {
+            $('body').addClass('state--error');
+            vm.error = 'Sorry, we are having trouble connecting to Givey';
+          },
           loadTeam = function() {
             return TeamService
                     .requestTeam()
@@ -25,10 +29,12 @@
           loadTeamMembers = function(team) {
             return TeamMemberService
                     .requestTeamMembers(team)
-                    .then(function(teamMembers) {
-                      vm.teamMembers = teamMembers;
-                      return teamMembers;
-                    });
+                    .then(
+                      function(teamMembers) {
+                        vm.teamMembers = teamMembers;
+                        return teamMembers;
+                      },
+                    handleError);
           },
           getTeamTotal = function(teamMembers) {
             return TeamService

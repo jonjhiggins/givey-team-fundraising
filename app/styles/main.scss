@@ -171,6 +171,51 @@
     }
   }
 
+// Panels
+// ============================================
+
+  .panel {
+    @extend %strech;
+    position: fixed;
+    display: flex;
+    z-index: 1000;
+    background-color: rgba(255,255,255,0.85);
+    transition: opacity 400ms ease-out;
+    transition-delay: 400ms;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    justify-content: center;
+
+    .state--error & {
+      opacity: 1;
+    }
+
+
+    .panel__message {
+      flex-grow: 0;
+      flex-shrink: 0;
+      align-self:center;
+      padding: $base-line-height;
+      width: 33vw;
+      z-index: 1001;
+      text-align: center;
+      background-color: rgba(255,255,255,0.85);
+    }
+  }
+
+
+// States: error
+// ============================================
+
+  .state--error {
+    .panel--error {
+      visibility: visible;
+      max-height: none;
+    }
+  }
+
 
 
 // Sections

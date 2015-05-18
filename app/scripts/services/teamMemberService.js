@@ -26,20 +26,33 @@
             loadBusiness = function(team) {
               return Givey
                       .find('business', team.giveyBusiness)
-                      .then(function(business) {
-                        return business.get('confirmedEmployees');
-                      });
+                      .then(
+                        loadBusinessSuccess,
+                        reject
+                      );
+            },
+            loadBusinessSuccess = function(business) {
+              return business.get('confirmedEmployees');
             },
             loadTeamMembers = function(employees) {
               return $.each(employees, TeamMemberService.processTeamMember);
             },
             resolve = function() {
               return deferred.resolve(teamMembers);
+            },
+            reject = function(e) {
+              return deferred.reject(e);
             };
 
         loadBusiness(team)
-          .then(loadTeamMembers)
-          .then(resolve);
+          .then(
+            loadTeamMembers,
+            reject
+          )
+          .then(
+            resolve,
+            reject
+          );
 
         return deferred.promise;
       };
